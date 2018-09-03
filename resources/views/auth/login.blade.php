@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header text-center">{{ __('Login') }}</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                         @csrf
@@ -58,15 +58,18 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                        <div class="form-group row mb-0 ">
+                            <div class="col-md-8 mx-auto text-center">
+                                <button type="submit" class="btn btn-block btn-primary">
                                     {{ __('Login') }}
                                 </button>
+                            </div>
+                        </div>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
+                         <div class="form-group row mx-auto">
+                            <div class="col-md-8 mx-auto text-center">
+                                <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a> <br>
+                                <a href="{{ route('register') }}">{{ __('Create New Account') }}</a>
                             </div>
                         </div>
                     </form>
