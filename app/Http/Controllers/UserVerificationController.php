@@ -10,10 +10,6 @@ use Mail;
 
 class UserVerificationController extends Controller
 {
-    public function sendVerificationToken()
-    {
-        //
-    }
     public function verify(Request $request)
     {
         $user=User::where('email',$request->email)->first();
