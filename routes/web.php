@@ -12,12 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('dashboard.pages.startpage');
+    return view('dashboard.pages.managePodcasts');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/managePodcasts','PodcastController@index')->name('managePodcasts');
 
 Route::get('/verify','UserVerificationController@verify')->name('user.verifyEmail');
 Route::get('/resend','UserVerificationController@resend')->name('user.resendVerificationEmail');

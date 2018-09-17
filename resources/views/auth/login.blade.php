@@ -7,15 +7,20 @@
             <div class="card">
                 <div class="card-header text-center">{{ __('Login') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
-                        @csrf
                         @if(isset($info))
-                        {{$info}}
+                        <div class="verification-info text-center my-2">
+                            {{$info}}
+                        </div>
                         @endif
 
                         @if(isset($verificationInfo))
-                        {!!$verificationInfo!!}
+                        <div class="verification-info text-center my-2">
+                            {!!$verificationInfo!!}
+                        </div>
                         @endif
+                    <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+                        @csrf
+
 
 
                         <div class="form-group row">
