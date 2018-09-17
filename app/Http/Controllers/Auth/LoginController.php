@@ -46,7 +46,8 @@ class LoginController extends Controller
         {
             Auth::logout();
             return view('auth.login')->withVerificationInfo('Please activate your account. <a href="'
-            . route('user.resendVerificationEmail').'?email=' . $user->email .'">Resend?</a>');
+            . route('user.resendVerificationEmail').'?email=' . $user->email .'">Resend verification mail?</a>');
+            
         }
     }
 }
