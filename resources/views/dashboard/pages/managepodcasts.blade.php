@@ -2,7 +2,7 @@
 @section('content')
 <div class="row justify-content-center align-items-center mx-auto h-100">
         <div class="col-md-6 text-center my-2">
-            <label class="btn btn-primary">Create a new Podcast</label>
+            <a href="{{route('podcast.create')}}" class="btn btn-primary">Create a new Podcast</a>
         </div>
         @isset($podcasts)
         <table class="table">

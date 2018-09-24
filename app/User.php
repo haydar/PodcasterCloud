@@ -36,6 +36,9 @@ class User extends Authenticatable
         return $this->hasOne(UserVerification::class);
     }
 
-
+    public function podcast()
+    {
+        return $this->hasOne(Podcast::class);
+    }
 
 }
