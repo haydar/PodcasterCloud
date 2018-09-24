@@ -23,5 +23,5 @@ Route::get('/resend','UserVerificationController@resend')->name('user.resendVeri
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix'=>'manage','middleware' => 'auth'], function () {
-    Route::resource('podcast', 'PodcastController')->except(['edit']);
+    Route::resource('podcast', 'PodcastController');
 });

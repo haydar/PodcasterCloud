@@ -49,6 +49,11 @@ class PodcastController extends Controller
             'itunesSummary'=>'nullable|max:255',
         ));
 
+        if($request->name=="create")
+        {
+            return redirect()->route('podcast.create')->withErrors("Podcast Name cannot be 'create'.");
+        }
+
         $podcast=new Podcast;
 
         $podcast->user_id=Auth::id();
@@ -72,8 +77,6 @@ class PodcastController extends Controller
         $podcast->itunesSummary=$request->itunesSummary;
 
         $podcast->save();
-
-        return 'ddd';
     }
 
     /**
