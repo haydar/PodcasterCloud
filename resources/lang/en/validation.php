@@ -141,6 +141,19 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'artworkImage'=>'Artwork Image',
+        'name'=>'Podcast Name',
+        'subtitle'=>'Subtitle',
+        'description'=>'Description',
+        'language'=>'Language',
+        'category'=>'Category',
+        'description'=>'Description',
+        'artworkImage'=>'Artwork Image',
+        'itunesEmail'=>'iTunes Email Adress',
+        'authorName'=>'Author Name',
+        'itunesSummary'=>'itunesSummary',
+        'description'=>'Description',
+    ],
 
 ];

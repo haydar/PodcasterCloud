@@ -112,35 +112,35 @@
                                     </select>
                                 </div>
                                 <div class="form-group row">
-                                        <label for="podcast_category">Podcast Category</label>
-                                        <select required name="category" id="podcast-category" class="form-control">
-                                                <option value="" disabled selected>Select Your Category</option>
-                                                <option value="arts">Arts</option>
-                                                <option value="business">Business</option>
-                                                <option value="comedy">Comedy</option>
-                                                <option value="education">Education</option>
-                                                <option value="games_hobbies">Games &amp; Hobbies</option>
-                                                <option value="government_organizations">Government &amp; Organizations</option>
-                                                <option value="health">Health</option>
-                                                <option value="kids_family">Kids &amp; Family</option>
-                                                <option value="miscellaneous">Miscellaneous</option>
-                                                <option value="music">Music</option>
-                                                <option value="news_politics">News &amp; Politics</option>
-                                                <option value="religion_spirituality">Religion &amp; Spirituality</option>
-                                                <option value="science_medicine">Science &amp; Medicine</option>
-                                                <option value="society_culture">Society &amp; Culture</option>
-                                                <option value="sports_recreation">Sports &amp; Recreation</option>
-                                                <option value="technology">Technology</option>
-                                                <option value="tv_film">TV &amp; Film</option>
-                                                </select>
-                                    </div>
-                                    <div class="form-group row">
-                                            <label for="artwork-image">Artwork Image</label>
-                                            <input type="file" required accept=".jpg,.gif,.png,.jpeg,.gif,.svg" name="artworkImage" class="form-control-file"  id="artwork-image">
-                                            </div>
-                                    <div class="form-group row float-right">
-                                        <button id="next" type="submit" class="btn btn-success col-sm-12 btn-sm-block pull-right">Next <i class="fas fa-arrow-right"></i></button>
-                                    </div>
+                                    <label for="podcast_category">Podcast Category</label>
+                                    <select required name="category" id="podcast-category" class="form-control">
+                                            <option value="" disabled selected>Select Your Category</option>
+                                            <option value="arts">Arts</option>
+                                            <option value="business">Business</option>
+                                            <option value="comedy">Comedy</option>
+                                            <option value="education">Education</option>
+                                            <option value="games_hobbies">Games &amp; Hobbies</option>
+                                            <option value="government_organizations">Government &amp; Organizations</option>
+                                            <option value="health">Health</option>
+                                            <option value="kids_family">Kids &amp; Family</option>
+                                            <option value="miscellaneous">Miscellaneous</option>
+                                            <option value="music">Music</option>
+                                            <option value="news_politics">News &amp; Politics</option>
+                                            <option value="religion_spirituality">Religion &amp; Spirituality</option>
+                                            <option value="science_medicine">Science &amp; Medicine</option>
+                                            <option value="society_culture">Society &amp; Culture</option>
+                                            <option value="sports_recreation">Sports &amp; Recreation</option>
+                                            <option value="technology">Technology</option>
+                                            <option value="tv_film">TV &amp; Film</option>
+                                            </select>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="artwork-image">Artwork Image</label>
+                                    <input type="file" required accept=".jpg,.gif,.png,.jpeg,.gif,.svg" name="artworkImage" class="form-control-file"  id="artwork-image">
+                                </div>
+                                <div class="form-group row float-right">
+                                    <button id="next" type="submit" class="btn btn-success col-sm-12 btn-sm-block pull-right">Next <i class="fas fa-arrow-right"></i></button>
+                                </div>
                             </section>
                 </section>
                 </section>
