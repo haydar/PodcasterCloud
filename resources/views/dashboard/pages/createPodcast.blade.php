@@ -29,7 +29,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <label for="description">Description</label>
-                                        <textarea name="description" required name="description" class="form-control" placeholder="Tell about your podcast..." id="description" cols="30" rows="3"></textarea>
+                                        <textarea name="description" required name="description" class="form-control" placeholder="Tell about your podcast..." id="description" cols="30" rows="5"></textarea>
                                     </div>
                             </section>
                             <section class="float-right col-md-6">
@@ -135,8 +135,12 @@
                                             </select>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="artwork-image">Artwork Image</label>
-                                    <input type="file" required accept=".jpg,.gif,.png,.jpeg,.gif,.svg" name="artworkImage" class="form-control-file"  id="artwork-image">
+                                    <label for="website">Website</label>
+                                    <input type="url" name="website" placeholder="http://example.com" class="form-control" id="website">
+                                </div>
+                                <div class="form-group row">
+                                        <label for="artwork-image">Artwork Image</label>
+                                        <input type="file" required accept=".jpg,.gif,.png,.jpeg,.gif,.svg" name="artworkImage" class="form-control-file"  id="artwork-image">
                                 </div>
                                 <div class="form-group row float-right">
                                     <button id="next" type="submit" class="btn btn-success col-sm-12 btn-sm-block pull-right">Next <i class="fas fa-arrow-right"></i></button>
@@ -145,15 +149,15 @@
                 </section>
                 </section>
                 <section id="stepTwo" style="display:none;">
+                    <div class="form-group row">
+                            <label for="author-name">Podcast Author</label>
+                            <input type="text" name="authorName" placeholder="Author Name" class="form-control" id="author-name">
+                    </div>
                     <p>If you are not using iTunes, this section is optional, but if you are using iTunes at present,
                         you should fill all fields, because iTunes needs more pieces of information.</p>
                     <div class="form-group row">
                         <label for="itunes">iTunes Email Adress</label>
                         <input type="email" name="itunesEmail" placeholder="iTunes Email" class="form-control" id="itunes">
-                    </div>
-                    <div class="form-group row">
-                        <label for="author-name">Podcast Author</label>
-                        <input type="text" name="authorName" placeholder="Author Name" class="form-control" id="author-name">
                     </div>
                     <div class="form-group row">
                             <label for="itunes-summary">iTunes Summary</label>
@@ -172,7 +176,7 @@
 @section('js')
 <script>
     $('#next').click(function (e) {
-        if(document.querySelectorAll("#stepOne *:valid").length>6===true){
+        if(document.querySelectorAll("#stepOne *:valid").length>7===true){
             e.preventDefault();
             $("#stepOne").hide(1000);
             $("#stepTwo").show(1000);

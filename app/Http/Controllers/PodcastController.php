@@ -47,6 +47,7 @@ class PodcastController extends Controller
             'itunesEmail'=>'nullable|email|max:255',
             'authorName'=>'nullable|max:255|alpha',
             'itunesSummary'=>'nullable|max:255',
+            'website'=>'nullable|max:50|url',
         ));
 
         if($request->name=="create")
@@ -71,6 +72,7 @@ class PodcastController extends Controller
             Image::make($image)->resize(400,400)->save($location);
         }
 
+        $podcast->website=$request->website;
         $podcast->artworkImage=$filename;
         $podcast->itunesEmail=$request->itunesEmail;
         $podcast->authorName=$request->authorName;

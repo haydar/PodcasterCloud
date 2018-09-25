@@ -154,6 +154,7 @@ return [
         'authorName'=>'Author Name',
         'itunesSummary'=>'itunesSummary',
         'description'=>'Description',
+        'website'=>'Web Site',
     ],
 
 ];
