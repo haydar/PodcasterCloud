@@ -128,6 +128,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'artworkImage' => [
+            'dimensions' => 'At least, Artwork Image should be 400x400px',
+        ],
     ],
 
     /*
@@ -149,10 +152,9 @@ return [
         'language'=>'Language',
         'category'=>'Category',
         'description'=>'Description',
-        'artworkImage'=>'Artwork Image',
         'itunesEmail'=>'iTunes Email Adress',
         'authorName'=>'Author Name',
-        'itunesSummary'=>'itunesSummary',
+        'itunesSummary'=>'iTunes Summary',
         'description'=>'Description',
         'website'=>'Web Site',
     ],

@@ -6,6 +6,7 @@ use App\Podcast;
 use Illuminate\Http\Request;
 use Auth;
 use Image;
+use Purifier;
 
 class PodcastController extends Controller
 {
@@ -58,9 +59,9 @@ class PodcastController extends Controller
         $podcast=new Podcast;
 
         $podcast->user_id=Auth::id();
-        $podcast->name=$request->name;
-        $podcast->subtitle=$request->subtitle;
-        $podcast->description=$request->description;
+        $podcast->name=Purifier::clean($request->name);
+        $podcast->subtitle=Purifier::clean($request->subtitle);
+        $podcast->description=Purifier::clean($request->description);
         $podcast->language=$request->language;
         $podcast->category=$request->category;
 
@@ -72,11 +73,11 @@ class PodcastController extends Controller
             Image::make($image)->resize(400,400)->save($location);
         }
 
-        $podcast->website=$request->website;
+        $podcast->website=Purifier::clean($request->website);
         $podcast->artworkImage=$filename;
-        $podcast->itunesEmail=$request->itunesEmail;
-        $podcast->authorName=$request->authorName;
-        $podcast->itunesSummary=$request->itunesSummary;
+        $podcast->itunesEmail=Purifier::clean($request->itunesEmail);
+        $podcast->authorName=Purifier::clean($request->authorName);
+        $podcast->itunesSummary=Purifier::clean($request->itunesSummary);
 
         $podcast->save();
     }
