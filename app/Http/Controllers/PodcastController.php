@@ -74,7 +74,7 @@ class PodcastController extends Controller
         }
 
         $podcast->website=Purifier::clean($request->website);
-        $podcast->artworkImage=$filename;
+        $podcast->artworkImage=str_replace(' ', '',$filename);
         $podcast->itunesEmail=Purifier::clean($request->itunesEmail);
         $podcast->authorName=Purifier::clean($request->authorName);
         $podcast->itunesSummary=Purifier::clean($request->itunesSummary);
