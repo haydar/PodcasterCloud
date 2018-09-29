@@ -1,82 +1,73 @@
-<div class="sidebar" data-color="white">
-    <!--Tip 1: You can change the color of the sidebar using: data-color="white | black"-->
-
-    <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-      Creative Tim </a>
-    </div>
-
-    <div class="sidebar-wrapper">
-        <div class="user">
-            <div class="photo">
-                <img src="../assets/img/chet.jpg" />
-            </div>
-            <div class="info">
-                <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-                    <span>
-                  Chet Facker
-                  <b class="caret"></b>
-              </span>
-                </a>
-                <div class="clearfix"></div>
-                <div class="collapse" id="collapseExample">
-                    <ul class="nav">
-                        <li>
-                            <a href="#">
-                                <span class="sidebar-mini-icon">MP</span>
-                                <span class="sidebar-normal">My Profile</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="sidebar-mini-icon">EP</span>
-                                <span class="sidebar-normal">Edit Profile</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="sidebar-mini-icon">S</span>
-                                <span class="sidebar-normal">Settings</span>
-                            </a>
-                        </li>
-                    </ul>
+<div class="sidebar" data-color="black" data-active-color="danger">
+        <!--Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"-->
+        <div class="logo">
+        <a href="{{url('/')}}" class="simple-text logo-mini">
+                <div class="logo-image-small">
                 </div>
+            </a>
+            <a href="{{url('/')}}"  class="simple-text logo-normal">
+                Creative Tim
+                <!-- <div class="logo-image-big">
+                  <img src="../assets/img/logo-big.png">
+                </div> -->
+              </a>
+        </div>
+        <div class="sidebar-wrapper ps-container ps-theme-default ps-active-x" data-ps-id="dbffba71-a360-4705-1a8a-5ef820a81fef">
+            <ul class="nav">
+                <li class="active ">
+                    <a href="./dashboard.html">
+                        <i class="nc-icon nc-bank"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="./icons.html">
+                        <i class="nc-icon nc-diamond"></i>
+                        <p>Icons</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="./map.html">
+                        <i class="nc-icon nc-pin-3"></i>
+                        <p>Maps</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="./notifications.html">
+                        <i class="nc-icon nc-bell-55"></i>
+                        <p>Notifications</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="./user.html">
+                        <i class="nc-icon nc-single-02"></i>
+                        <p>User Profile</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="./tables.html">
+                        <i class="nc-icon nc-tile-56"></i>
+                        <p>Table List</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="./typography.html">
+                        <i class="nc-icon nc-caps-small"></i>
+                        <p>Typography</p>
+                    </a>
+                </li>
+                <li class="active-pro">
+                    <a href="./upgrade.html">
+                        <i class="nc-icon nc-spaceship"></i>
+                        <p>Upgrade to PRO</p>
+                    </a>
+                </li>
+            </ul>
+            <div class="ps-scrollbar-x-rail" style="width: 260px; left: 0px; bottom: 0px;">
+                <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 258px;"></div>
+            </div>
+            <div class="ps-scrollbar-y-rail" style="top: 0px; right: 0px;">
+                <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div>
             </div>
         </div>
-        <ul class="nav">
-
-            <li class="active">
-                <a href="../examples/dashboard.html">
-                    <i class="nc-icon nc-app"></i>
-                    <p>Example 1</p>
-                </a>
-            </li>
-
-            <li>
-                <a data-toggle="collapse" href="#pagesExamples">
-                    <i class="nc-icon nc-layout-11"></i>
-                    <p>Example 2
-                        <b class="caret"></b>
-                    </p>
-                </a>
-
-                <div class="collapse" id="pagesExamples">
-                    <ul class="nav">
-                        <li>
-                            <a href="../examples/pages/pricing.html">
-                                <span class="sidebar-mini-icon">C1</span>
-                                <span class="sidebar-normal">Collapse 1</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../examples/pages/timeline.html">
-                                <span class="sidebar-mini-icon">C2</span>
-                                <span class="sidebar-normal">Collapse 2</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
     </div>
-</div>

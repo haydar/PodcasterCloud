@@ -22,10 +22,12 @@
 
             <form>
                 <div class="input-group no-border">
-                    <input type="text" value="" class="form-control" placeholder="Search...">
-                    <span class="input-group-addon">
-            <i class="nc-icon nc-zoom-split"></i>
-          </span>
+                  <input type="text" value="" class="form-control" placeholder="Search...">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <i class="nc-icon nc-zoom-split"></i>
+                    </div>
+                  </div>
                 </div>
             </form>
 
