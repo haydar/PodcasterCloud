@@ -151,7 +151,7 @@
                 <section id="stepTwo" style="display:none;">
                     <div class="form-group row">
                             <label for="author-name">Podcast Author</label>
-                            <input type="text" name="authorName" placeholder="Author Name" class="form-control" id="author-name">
+                            <input type="text" required name="authorName" placeholder="Author Name" class="form-control" id="author-name">
                     </div>
                     <p>If you are not using iTunes, this section is optional, but if you are using iTunes at present,
                         you should fill all fields, because iTunes needs more pieces of information.</p>

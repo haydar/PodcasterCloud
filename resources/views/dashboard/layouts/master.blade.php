@@ -1,4 +1,5 @@
 @include('dashboard.partials.header')
 @include('dashboard.partials.sidebar')
+@include('dashboard.partials._mainPanel')
 @yield('content')
 @include('dashboard.partials.footer')

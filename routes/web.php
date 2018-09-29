@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('dashboard.pages.managePodcasts');
+    return view('dashboard.pages.home');
 });
 
 Auth::routes();
