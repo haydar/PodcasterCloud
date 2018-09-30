@@ -24,4 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix'=>'manage','middleware' => 'auth'], function () {
     Route::resource('podcast', 'PodcastController');
+    Route::get('/dashboard', function () {
+        return view('dashboard.pages.home');
+    });
 });
