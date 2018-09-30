@@ -56,12 +56,6 @@
                         <p>Typography</p>
                     </a>
                 </li>
-                <li class="active-pro">
-                    <a href="./upgrade.html">
-                        <i class="nc-icon nc-spaceship"></i>
-                        <p>Upgrade to PRO</p>
-                    </a>
-                </li>
             </ul>
             <div class="ps-scrollbar-x-rail" style="width: 260px; left: 0px; bottom: 0px;">
                 <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 258px;"></div>

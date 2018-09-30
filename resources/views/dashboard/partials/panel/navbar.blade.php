@@ -19,49 +19,39 @@
         </button>
 
         <div class="collapse navbar-collapse justify-content-end" id="navigation">
-
-            <form>
-                <div class="input-group no-border">
-                  <input type="text" value="" class="form-control" placeholder="Search...">
-                  <div class="input-group-append">
-                    <div class="input-group-text">
-                      <i class="nc-icon nc-zoom-split"></i>
-                    </div>
-                  </div>
-                </div>
-            </form>
-
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#pablo">
-                        <i class="nc-icon nc-chart-bar-32"></i>
-                        <p>
-                            <span class="d-lg-none d-md-block">Stats</span>
-                        </p>
-                    </a>
-                </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="nc-icon nc-vector"></i>
-                        <p>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="nc-icon nc-bell-55"></i>
+                          <p>
                             <span class="d-lg-none d-md-block">Some Actions</span>
-                        </p>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#pablo">
+                          </p>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right show" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                      </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="nc-icon nc-single-02"></i>
                         <p>
+                            <span class="d-sm-none d-md-block">{{Auth::user()->name}}</span>
                             <span class="d-lg-none d-md-block">Account</span>
                         </p>
                     </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Your Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="https://podcastercloud.dev/logout" onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">Logout</a>
+                         <form id="logout-form" action="https://podcastercloud.dev/logout" method="POST" style="display: none;">
+                           @csrf
+                         </form>
+                    </div>
                 </li>
+
             </ul>
 
         </div>
