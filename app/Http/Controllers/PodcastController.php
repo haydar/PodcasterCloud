@@ -39,18 +39,18 @@ class PodcastController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, array(
-            'name'=>'required|max:255',
-            'subtitle'=>'required|max:255',
-            'description'=>'required|max:600',
-            'language'=>'required|max:20',
-            'category'=>'required|max:255',
+            'name'=>'required|string|max:255',
+            'subtitle'=>'required|string|max:255',
+            'description'=>'required|string|max:600',
+            'language'=>'required|string|max:20',
+            'category'=>'required|string|max:255',
             'artworkImage'=>'required|image|dimensions:min_width=400,min_height=400|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'itunesEmail'=>'nullable|email|max:255',
-            'authorName'=>'nullable|max:255|alpha',
-            'itunesSummary'=>'nullable|max:255',
-            'website'=>'nullable|max:50|url',
+            'authorName'=>'nullable|string|max:255|alpha',
+            'itunesSummary'=>'nullable|string|max:255',
+            'website'=>'nullable|string|max:50|url',
         ));
-
+        
         if($request->name=="create")
         {
             return redirect()->route('podcast.create')->withErrors("Podcast Name cannot be 'create'.");
@@ -69,7 +69,7 @@ class PodcastController extends Controller
         {
             $image=$request->file('artworkImage');
             $filename=$request->name.'-'.time().'.'.$image->getClientOriginalExtension();
-            $location=public_path('images/'.$filename);
+            $location=public_path('images/'.str_replace(' ', '',$filename));
             Image::make($image)->resize(400,400)->save($location);
         }
 

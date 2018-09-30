@@ -8,7 +8,7 @@
                 <div class="card-header text-center">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" aria-label="{{ __('Register') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -59,6 +59,20 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
+                        </div>
+
+                        <div class="form-group row">
+                                <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
+
+                                <div class="col-md-6">
+                                    <input type="file" accept=".jpg,.gif,.png,.jpeg,.gif,.svg" style="opacity:1; position:unset;" name="avatar" class="form-control-file"  id="avatar">
+
+                                    @if ($errors->has('avatar'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('avatar') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
                         </div>
 
                         <div class="form-group row mb-0">

@@ -139,8 +139,8 @@
                                     <input type="url" name="website" placeholder="http://example.com" class="form-control" id="website">
                                 </div>
                                 <div class="form-group row">
-                                        <label for="artwork-image">Artwork Image</label>
-                                        <input type="file" required accept=".jpg,.gif,.png,.jpeg,.gif,.svg" name="artworkImage" class="form-control-file"  id="artwork-image">
+                                    <label for="artwork-image">Artwork Image</label>
+                                    <input type="file" required accept=".jpg,.gif,.png,.jpeg,.gif,.svg" name="artworkImage" class="form-control-file"  id="artwork-image">
                                 </div>
                                 <div class="form-group row float-right">
                                     <button id="next" type="submit" class="btn btn-success col-sm-12 btn-sm-block pull-right">Next <i class="fas fa-arrow-right"></i></button>
