@@ -34,7 +34,7 @@
                         <div class="form-group row">
                             <label for="email" class="col-form-label col-md-4 my-auto">E-mail Adress:</label>
                             <div class="col-md-8">
-                                <input type="mail" required readonly value="{{Auth::user()->email}}" class="form-control-plaintext" name="email" placeholder="Type a Valid Email" id="email">
+                                <input type="email" required readonly value="{{Auth::user()->email}}" class="form-control-plaintext" name="email" placeholder="Type a Valid Email" id="email">
                             </div>
                         </div>
                         <div class="form-group row">
