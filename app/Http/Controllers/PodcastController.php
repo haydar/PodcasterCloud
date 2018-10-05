@@ -50,7 +50,7 @@ class PodcastController extends Controller
             'itunesSummary'=>'nullable|string|max:255',
             'website'=>'nullable|string|max:50|url',
         ));
-        
+
         if($request->name=="create")
         {
             return redirect()->route('podcast.create')->withErrors("Podcast Name cannot be 'create'.");
@@ -113,7 +113,7 @@ class PodcastController extends Controller
      */
     public function update(Request $request, Podcast $podcast)
     {
-        //
+        
     }
 
     /**

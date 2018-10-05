@@ -88,10 +88,10 @@ class RegisterController extends Controller
         {
             if(Input::hasFile('avatar'))
             {
-            $image=$data['avatar'];
-            $filename=$data['name'].'-'.time().'.'.$image->getClientOriginalExtension();
-            $location=public_path('images/profileAvatar/'.str_replace(' ', '',$filename));
-            Image::make($image)->resize(400,400)->save($location);
+                $image=$data['avatar'];
+                $filename=$data['name'].'-'.time().'.'.$image->getClientOriginalExtension();
+                $location=public_path('images/profileAvatar/'.str_replace(' ', '',$filename));
+                Image::make($image)->resize(400,400)->save($location);
             }
         }
 

@@ -5,8 +5,8 @@
                 <div class="logo-image-small">
                 </div>
             </a>
-            <a href="{{url('/')}}"  class="simple-text logo-normal">
-                Creative Tim
+            <a href="{{url('/')}}"  style="text-transform:none" class="simple-text logo-normal">
+                Podcaster Cloud
                 <!-- <div class="logo-image-big">
                   <img src="../assets/img/logo-big.png">
                 </div> -->

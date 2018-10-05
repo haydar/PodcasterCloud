@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('dashboard.pages.home');
+    return view('welcome');
 });
 
 Auth::routes();
@@ -23,8 +23,10 @@ Route::get('/resend','UserVerificationController@resend')->name('user.resendVeri
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix'=>'manage','middleware' => 'auth'], function () {
-    Route::resource('podcast', 'PodcastController');
-    Route::get('/dashboard', function () {
+    Route::get('/', function () {
         return view('dashboard.pages.home');
     });
+    Route::post('user','UserController@index');
+    Route::resource('user', 'UserController')->except(['create', 'store']);
+    Route::resource('podcast', 'PodcastController');
 });
