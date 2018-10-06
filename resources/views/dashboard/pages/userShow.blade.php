@@ -24,6 +24,9 @@
                     <button type="submit" class="btn btn-success btn-sm float-right" id="editCancel" style="text-transform:none">Edit Profile</button>
                 </div>
                 <div class="card-body">
+                <div class="status d-flex justify-content-center justify-align-center" style="display:none !important">
+                    <img class="loading" id="#loading" src="{{url('/')}}/images/loading.gif">
+                </div>
                 <form class="updateProfile">
                         <div class="form-group row">
                             <label for="name" class="col-form-label col-md-4 my-auto">User Name:</label>
@@ -107,6 +110,10 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     data:$('.updateProfile').serializeArray(),
+                    beforeSend:function() {
+                        $('.status').css('display','');
+                        $('.updateProfile').hide(100);
+                    },
                     success:function(result) {
                         var name=$('#name').val();
                         var mail=$('#email').val();
