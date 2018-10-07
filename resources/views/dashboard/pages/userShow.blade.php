@@ -11,6 +11,12 @@
                             <a href="#">
                                 <img class="avatar border-gray" src="{{url('/')}}/images/profileAvatar/{{Auth::user()->avatar}}">
                             </a>
+                            <div class="updateProfileImage">
+                                <button class="btn btn-sm btn-info" style="text-transform:none" type="button">
+                                        <i class="nc-icon nc-cloud-upload-94"></i>
+                                        Change Avatar
+                                </button>
+                            </div>
                         </div>
                     </div>
             </div>
@@ -120,8 +126,8 @@
                         var mail=$('#email').val();
                         $('#userProfileCard').html(formHtmlval);
                         $('#name').attr('value',name);
+                        $('#email').attr('value',mail);
                         $('#navbar-username').text(name);
-                        $('#email').val(mail);
                         formHtmlval= $('#userProfileCard').html();
                     },
                     error:function(result) {

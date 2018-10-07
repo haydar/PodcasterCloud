@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/images/profileAvatar/*
+!/public/images/profileAvatar/user.jpg
 /storage/*.key
 /.idea
 /.vscode
