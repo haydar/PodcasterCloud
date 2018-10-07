@@ -72,9 +72,10 @@
 @section('js')
 <script>
     $(document).ready(function() {
-       var  formHtmlval= $('#userProfileCard').html();
+       var  formHtmlval;
        $(document).on('click','#editCancel',function() {
            if($('#editCancel').html()=="Edit Profile"){
+                formHtmlval= $('#userProfileCard').html();
                 $('.form-control-plaintext').removeAttr('readonly');
                 $('.form-control-plaintext').removeClass().addClass('form-control');
                 $('.new-password, .updateButton, .password-confirm').attr("hidden",false);
@@ -118,8 +119,8 @@
                         var name=$('#name').val();
                         var mail=$('#email').val();
                         $('#userProfileCard').html(formHtmlval);
-                        $('#name, #navbar-username').val(name);
-                        $('#name, #navbar-username').text(name);
+                        $('#name').attr('value',name);
+                        $('#navbar-username').text(name);
                         $('#email').val(mail);
                         formHtmlval= $('#userProfileCard').html();
                     },
