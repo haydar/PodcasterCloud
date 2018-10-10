@@ -88,6 +88,7 @@ class UserController extends Controller
         ]);
 
         $user=User::find($id);
+        
         if(Hash::check($request->currentPassword, $user->password))
         {
             $user->name=$request->name;
@@ -112,5 +113,25 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Update avatar and delete old avatar image.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function postUpdateAvatar(Request $request, $id)
+    {
+        $this->validate($request, array(
+            'avatar'=>'required|image|dimensions:min_width=400,min_height=400|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ));
+
+        $user=User::find($id);
+
+        if ($request->hasFile('avatar')) {
+            #
+        }
     }
 }

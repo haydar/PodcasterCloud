@@ -1,22 +1,25 @@
+
 @extends('dashboard.layouts.master')
 @section('content')
 <div class="content">
     <div class="row">
         <div class="col-md-4">
             <div class="card card-user">
-                    <div class="card-body">
-                        <div class="image">
+                    <div class="card-body text-center">
+                        .<div class="author position-relative mt-0">
+                            <form id="#updateAvatar">
+                                <input type="file" name="avatar" id="avatar-input" class="avatar-input" accept=".jpg">
+                            </form>
+                            <figure>
+                                <i class="nc-icon nc-cloud-upload-94 mx-auto">Yükleee</i>
+                            </figure>
+                            <img class="avatar" src="{{url('/')}}/images/profileAvatar/{{Auth::user()->avatar}}">
                         </div>
-                        <div class="author">
-                            <a href="#">
-                                <img class="avatar border-gray" src="{{url('/')}}/images/profileAvatar/{{Auth::user()->avatar}}">
-                            </a>
-                            <div class="updateProfileImage">
-                                <button class="btn btn-sm btn-info" style="text-transform:none" type="button">
-                                        <i class="nc-icon nc-cloud-upload-94"></i>
-                                        Change Avatar
-                                </button>
-                            </div>
+                        <div class="updateProfileImage">
+                            <button class="btn btn-sm btn-info" id="updateAvatar" style="text-transform:none" type="button">
+                                    <i class="nc-icon nc-cloud-upload-94"></i>
+                                    Update Avatar
+                            </button>
                         </div>
                     </div>
             </div>
@@ -96,7 +99,8 @@
 
         $(document).on('click','#updateProfile', function(e){
             e.preventDefault();
-            var isFormValid=document.forms[1].checkValidity();
+            var updateProfileForm=document.getElementsByClassName('updateProfile');
+            var isFormValid=updateProfileForm[0].checkValidity();
             var newPassword=$('#new-password').val();
             var passwordConfirm=$('#new-password-confirm').val();
             if(newPassword!=passwordConfirm){
@@ -131,11 +135,25 @@
                         formHtmlval= $('#userProfileCard').html();
                     },
                     error:function(result) {
-                        alert("We're having a problem right now and please try it later.");
+                        alert("We're having a problem right now and please try later.");
                     }
                 });
             }
-            document.forms[1].reportValidity();
+            updateProfileForm[0].reportValidity();
+        });
+
+        <!--/*Update Avatar Button Events */-->
+        $(document).on('click','#updateAvatar',function () {
+            $.ajax({
+                url:"{{route('user.updateAvatar',Auth::id())}}",
+                type:'PUT',
+                dataType:'JSON',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data:$().serializeArray(),
+
+            });
         });
     });
 </script>

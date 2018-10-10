@@ -16919,3 +16919,27 @@ License - nucleoapp.com/license/
   }
 }
 
+.avatar-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 9999;
+  height: 124px;
+  width: 124px;
+}
+
+.author figure {
+  position: absolute;
+  cursor: pointer;
+  text-align: center;
+  z-index: 1;
+  height: 124px;
+  width: 124px;
+  display: block;
+}
+
+.author:hover figure {
+  display: block;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
