@@ -6,14 +6,19 @@
         <div class="col-md-4">
             <div class="card card-user">
                     <div class="card-body text-center">
-                        .<div class="author position-relative mt-0">
-                            <form id="#updateAvatar">
-                                <input type="file" name="avatar" id="avatar-input" class="avatar-input" accept=".jpg">
-                            </form>
-                            <figure>
-                                <i class="nc-icon nc-cloud-upload-94 mx-auto">Yükleee</i>
-                            </figure>
-                            <img class="avatar" src="{{url('/')}}/images/profileAvatar/{{Auth::user()->avatar}}">
+                        <div class="author position-relative mt-0">
+                            <div id="statusUpdateAvatar" class="d-flex justify-content-center justify-align-center" style="display:none !important">
+                                <img class="loading" id="#loading" src="{{url('/')}}/images/loading.gif">
+                            </div>
+                            <div id="updateAvatarSection">
+                                <form class="updateAvatarForm">
+                                    <input type="file" required name="avatar" id="avatar-input" class="avatar-input" accept=".jpg">
+                                </form>
+                                <figure>
+                                    <i class="nc-icon nc-cloud-upload-94 mx-auto">Yükleee</i>
+                                </figure>
+                                <img class="avatar" src="{{url('/')}}/images/profileAvatar/{{Auth::user()->avatar}}">
+                            </div>
                         </div>
                         <div class="updateProfileImage">
                             <button class="btn btn-sm btn-info" id="updateAvatar" style="text-transform:none" type="button">
@@ -33,7 +38,7 @@
                     <button type="submit" class="btn btn-success btn-sm float-right" id="editCancel" style="text-transform:none">Edit Profile</button>
                 </div>
                 <div class="card-body">
-                <div class="status d-flex justify-content-center justify-align-center" style="display:none !important">
+                <div id="statusUpdateProfile" class="d-flex justify-content-center justify-align-center" style="display:none !important">
                     <img class="loading" id="#loading" src="{{url('/')}}/images/loading.gif">
                 </div>
                 <form class="updateProfile">
@@ -113,6 +118,15 @@
                 document.getElementById('new-password').setCustomValidity('');
             }
             if(isFormValid){
+                function getBackUpdateProfile(){
+                    var name=$('#name').val();
+                    var mail=$('#email').val();
+                    $('#userProfileCard').html(formHtmlval);
+                    $('#name').attr('value',name);
+                    $('#email').attr('value',mail);
+                    $('#navbar-username').text(name);
+                    formHtmlval= $('#userProfileCard').html();
+                }
                 $.ajax({
                     url:"{{route('user.update', Auth::id())}}",
                     type:'put',
@@ -122,20 +136,21 @@
                     },
                     data:$('.updateProfile').serializeArray(),
                     beforeSend:function() {
-                        $('.status').css('display','');
+                        $('#statusUpdateProfile').css('display','');
                         $('.updateProfile').hide(100);
                     },
                     success:function(result) {
-                        var name=$('#name').val();
-                        var mail=$('#email').val();
-                        $('#userProfileCard').html(formHtmlval);
-                        $('#name').attr('value',name);
-                        $('#email').attr('value',mail);
-                        $('#navbar-username').text(name);
-                        formHtmlval= $('#userProfileCard').html();
+                        getBackUpdateProfile();
                     },
                     error:function(result) {
-                        alert("We're having a problem right now and please try later.");
+                        if (result.status=='401'){
+                            var $data=jQuery.parseJSON(result.responseText);
+                            alert($data.message);
+                            getBackUpdateProfile();
+                        }
+                        else{
+                            alert("We're having a problem right now and please try later.");
+                        }
                     }
                 });
             }
@@ -144,16 +159,30 @@
 
         <!--/*Update Avatar Button Events */-->
         $(document).on('click','#updateAvatar',function () {
-            $.ajax({
-                url:"{{route('user.updateAvatar',Auth::id())}}",
-                type:'PUT',
-                dataType:'JSON',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data:$().serializeArray(),
-
-            });
+            var updateAvatarForm=document.getElementsByClassName('updateAvatarForm');
+            var isFormValid=updateAvatarForm[0].checkValidity();
+            if (isFormValid) {
+                $.ajax({
+                    url:"{{route('user.updateAvatar',Auth::id())}}",
+                    type:'POST',
+                    dataType:'JSON',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data:$('.updateAvatarForm').serializeArray(),
+                    beforeSend:function() {
+                        $('#statusUpdateAvatar').css('display','');
+                        $('#updateAvatarSection').hide(100);
+                    },
+                    success:function() {
+                        $('.statusUpdateAvatar').hide();
+                    },
+                    error:function(result) {
+                        alert("We're having a problem right now and please try later.");
+                    }
+                });
+                updateAvatarForm[0].reportValidity();
+            }
         });
     });
 </script>

@@ -68,8 +68,8 @@ class PodcastController extends Controller
         if($request->hasFile('artworkImage'))
         {
             $image=$request->file('artworkImage');
-            $filename=$request->name.'-'.time().'.'.$image->getClientOriginalExtension();
-            $location=public_path('images/'.str_replace(' ', '',$filename));
+            $filename=str_replace(' ','',$request->name.'-'.time().'.'.$image->getClientOriginalExtension());
+            $location=public_path('images/'.$filename);
             Image::make($image)->resize(400,400)->save($location);
         }
 
@@ -113,7 +113,7 @@ class PodcastController extends Controller
      */
     public function update(Request $request, Podcast $podcast)
     {
-        
+
     }
 
     /**

@@ -88,7 +88,7 @@ class UserController extends Controller
         ]);
 
         $user=User::find($id);
-        
+
         if(Hash::check($request->currentPassword, $user->password))
         {
             $user->name=$request->name;
@@ -96,10 +96,10 @@ class UserController extends Controller
             $user->password=bcrypt($request->newPassword);
             $user->save();
 
-            return response()->json([
-                'status'=>true,
-                'message'=>'User successfully updated',
-            ]);
+            return response()->json(['message'=>'User successfully updated'],200);
+        }
+        else{
+            return response()->json(['message'=>"Your old password looks wrong"],401);
         }
 
     }
@@ -131,7 +131,20 @@ class UserController extends Controller
         $user=User::find($id);
 
         if ($request->hasFile('avatar')) {
-            #
+            $image=$request->file('avatar');
+            $filename=str_replace(' ','',$request->name.'-'.time().'.'.$image->getClientOriginalExtension());
+            $location=public_path('images/profileAvatar'.$filename);
+            Image::make($image)->resize(400,400)->save($location);
+
+            //Delete old avatar if user's avatar isn't default avatar
+            if (!$user->avatar=='user.jpg') {
+                Storage::delete('images/profileAvatar'.$user->avatar);
+            }
+
+            $user->avatar=$filename;
+            $user->save();
+
+            return response()->json(['message'=>'Avatar successfully updated']);
         }
     }
 }
