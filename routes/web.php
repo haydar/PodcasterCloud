@@ -27,7 +27,10 @@ Route::group(['prefix'=>'manage','middleware' => 'auth'], function () {
         return view('dashboard.pages.home');
     });
     Route::post('user','UserController@index');
+    
     Route::resource('user', 'UserController')->except(['create', 'store']);
+
     Route::post('user/{id}/updateAvatar', 'UserController@postUpdateAvatar')->name('user.updateAvatar');
+
     Route::resource('podcast', 'PodcastController');
 });

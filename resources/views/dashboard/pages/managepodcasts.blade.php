@@ -5,7 +5,7 @@
             <a href="{{route('podcast.create')}}" class="btn btn-primary">Create a new Podcast</a>
         </div>
         @isset($podcasts)
-        <table class="table">
+        <table class="table col-md-8 bg-white">
             <thead>
                 <tr>
                     <th>Podcast Name</th>
@@ -15,20 +15,18 @@
             <tbody>
                 @foreach ($podcasts as $podcast)
                 <tr>
-                    <td>{{ $podcast->title }}</td>
-                    <td>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <a href="{{ route('podcast.show', $podcast->slug) }}" class="btn btn-info btn-md">Manage Podcast</a>
-                            </div>
-                            <div class="col-md-1">
-                                <form role="form" method="POST" action="{{route('podcasts.destroy',$podcast->id)}}">
-                                    @csrf
-                                    <input name="_method" type="hidden" value="DELETE">
-                                    <button type="submit" class="btn btn-danger">Sil</button>
-                                </form>
-                            </div>
+                    <td class="col-md-6">{{ $podcast->name }}</td>
+                    <td class="col-md-3">
+                        <div>
+                            <a href="{{ route('podcast.show', $podcast->slug) }}" class="btn btn-success btn-md">Manage Podcast</a>
                         </div>
+                    </td>
+                    <td class="col-md-3">
+                        <form role="form" method="POST" action="{{route('podcast.destroy',$podcast->id)}}">
+                            @csrf
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button type="submit" class="btn btn-danger">Sil</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

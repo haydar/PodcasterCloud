@@ -17,7 +17,9 @@ class PodcastController extends Controller
      */
     public function index()
     {
-        return view('dashboard.pages.managePodcasts');
+        $podcasts=Podcast::Where('user_id', Auth::id())->get();
+
+        return view('dashboard.pages.managePodcasts')->withPodcasts($podcasts);
     }
 
     /**
@@ -46,7 +48,7 @@ class PodcastController extends Controller
             'category'=>'required|string|max:255',
             'artworkImage'=>'required|image|dimensions:min_width=400,min_height=400|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'itunesEmail'=>'nullable|email|max:255',
-            'authorName'=>'nullable|string|max:255|alpha',
+            'authorName'=>'nullable|string|max:255',
             'itunesSummary'=>'nullable|string|max:255',
             'website'=>'nullable|string|max:50|url',
         ));

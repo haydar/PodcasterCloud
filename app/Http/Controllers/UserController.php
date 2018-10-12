@@ -99,7 +99,7 @@ class UserController extends Controller
             return response()->json(['message'=>'User successfully updated'],200);
         }
         else{
-            return response()->json(['message'=>"Your old password looks wrong"],401);
+            return response()->json(['message'=>"Your old password looks wrong. Please re-type current password"],401);
         }
 
     }
