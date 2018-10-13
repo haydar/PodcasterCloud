@@ -87,12 +87,14 @@ class PodcastController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Podcast  $podcast
+     * @param  string $slug
      * @return \Illuminate\Http\Response
      */
-    public function show(Podcast $podcast)
+    public function show($slug)
     {
-        //
+        $podcast=Podcast::Where('slug',$slug)->first();
+
+        return view('dashboard.pages.home')->withPodcast($podcast);
     }
 
     /**

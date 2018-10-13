@@ -6,7 +6,7 @@
             <h5>Create Podcast</h5>
         </div>
         <div class="card-body text-body">
-                @if ($errors->any())
+            @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)

@@ -23,8 +23,6 @@
                     </td>
                     <td class="col-md-3">
                         <form role="form" method="POST" action="{{route('podcast.destroy',$podcast->id)}}">
-                            @csrf
-                            <input name="_method" type="hidden" value="DELETE">
                             <button type="submit" class="btn btn-danger">Sil</button>
                         </form>
                     </td>
