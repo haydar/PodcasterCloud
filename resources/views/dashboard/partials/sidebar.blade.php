@@ -5,7 +5,7 @@
                 <div class="logo-image-small">
                 </div>
             </a>
-            <a href="{{url('/')}}"  style="text-transform:none" class="simple-text logo-normal">
+            <a href="{{url('/')}}" style="text-transform:none" class="simple-text logo-normal">
                 Podcaster Cloud
                 <!-- <div class="logo-image-big">
                   <img src="../assets/img/logo-big.png">
@@ -15,15 +15,15 @@
         <div class="sidebar-wrapper ps-container ps-theme-default ps-active-x" data-ps-id="dbffba71-a360-4705-1a8a-5ef820a81fef">
             <ul class="nav">
                 <li class="active ">
-                    <a href="./dashboard.html">
+                    <a href="{{route('podcast.show',$podcast->slug)}}">
                         <i class="nc-icon nc-bank"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
                     <a href="./icons.html">
-                        <i class="nc-icon nc-diamond"></i>
-                        <p>Icons</p>
+                        <i class="nc-icon nc-bullet-list-67"></i>
+                        <p>Episodes</p>
                     </a>
                 </li>
                 <li>

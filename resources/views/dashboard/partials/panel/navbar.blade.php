@@ -9,7 +9,11 @@
                     <span class="navbar-toggler-bar bar3"></span>
                 </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Dashboard</a>
+            <a class="navbar-brand" href="#">@isset($podcast->name) {{$podcast->name."'s Podcast"}} @endisset</a>
+
+            <button class="btn btn-round btn-success btn-sm" style="text-transform:none">
+                <i class="nc-icon nc-cloud-upload-94"></i>   Upload Episode
+            </button>
         </div>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">

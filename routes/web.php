@@ -24,10 +24,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix'=>'manage','middleware' => 'auth'], function () {
     Route::get('/', function () {
-        return view('dashboard.pages.home');
+        return redirect()->route('podcast.index');
     });
+
     Route::post('user','UserController@index');
-    
+
     Route::resource('user', 'UserController')->except(['create', 'store']);
 
     Route::post('user/{id}/updateAvatar', 'UserController@postUpdateAvatar')->name('user.updateAvatar');
