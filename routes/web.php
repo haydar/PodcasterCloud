@@ -20,12 +20,11 @@ Auth::routes();
 Route::get('/verify','UserVerificationController@verify')->name('user.verifyEmail');
 Route::get('/resend','UserVerificationController@resend')->name('user.resendVerificationEmail');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'PodcastController@index')->name('home');
 
-Route::group(['prefix'=>'manage','middleware' => 'auth'], function () {
-    Route::get('/', function () {
-        return redirect()->route('podcast.index');
-    });
+Route::group(['prefix'=>'manage','middleware' => 'auth'], function() {
+
+    Route::get('/', 'PodcastController@index');
 
     Route::post('user','UserController@index');
 

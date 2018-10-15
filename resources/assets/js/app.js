@@ -5,13 +5,13 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+
 require('./bootstrap');
 require('paper-dashboard-2/assets/js/plugins/bootstrap-notify');
 require('paper-dashboard-2/assets/js/plugins/chartjs.min');
 require('paper-dashboard-2/assets/js/plugins/perfect-scrollbar.jquery.min');
 
 require('paper-dashboard-2/assets/js/paper-dashboard');
+
 require('./perfect-scrollbar');
-
-
 

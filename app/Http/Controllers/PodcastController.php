@@ -92,7 +92,6 @@ class PodcastController extends Controller
      */
     public function show($slug)
     {
-
         $podcast=Podcast::Where('slug',$slug)->first();
 
         if(Auth::id()==$podcast->user_id){

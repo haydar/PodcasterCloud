@@ -1,6 +1,9 @@
 
 @extends('dashboard.layouts.master')
 @section('content')
+@section('css')
+    <link href="{{asset('css/sweetalert.css')}}" rel="stylesheet" />
+@endsection
 <div class="content">
     <div class="row">
         <div class="col-md-4">
@@ -84,9 +87,21 @@
 </div>
 @endsection
 @section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.5/sweetalert2.all.js" integrity="sha256-+yrurPEYDIh9PES+m128Vc0a49Csb6lx0lSzXjX62HQ=" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function() {
        var  formHtmlval;
+
+        function getBackUpdateProfile(){
+            var name=$('#name').val();
+            var mail=$('#email').val();
+            $('#userProfileCard').html(formHtmlval);
+            $('#name').attr('value',name);
+            $('#email').attr('value',mail);
+            $('#navbar-username').text(name);
+            formHtmlval= $('#userProfileCard').html();
+        }
+
        $(document).on('click','#editCancel',function() {
            if($('#editCancel').html()=="Edit Profile"){
                 formHtmlval= $('#userProfileCard').html();
@@ -118,15 +133,7 @@
                 document.getElementById('new-password').setCustomValidity('');
             }
             if(isFormValid){
-                function getBackUpdateProfile(){
-                    var name=$('#name').val();
-                    var mail=$('#email').val();
-                    $('#userProfileCard').html(formHtmlval);
-                    $('#name').attr('value',name);
-                    $('#email').attr('value',mail);
-                    $('#navbar-username').text(name);
-                    formHtmlval= $('#userProfileCard').html();
-                }
+
                 $.ajax({
                     url:"{{route('user.update', Auth::id())}}",
                     type:'put',
@@ -143,13 +150,28 @@
                         getBackUpdateProfile();
                     },
                     error:function(result) {
+                        var $data=jQuery.parseJSON(result.responseText);
                         if (result.status=='401'){
-                            var $data=jQuery.parseJSON(result.responseText);
-                            alert($data.message);
+                            swal({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: $data.message,
+                            });
                             getBackUpdateProfile();
                         }
                         else{
-                            alert("We're having a problem right now and please try later.");
+                            var $errors='';
+                            Object.keys($data.errors).forEach(key => {
+                                $data.errors[key].forEach(errorMessage => {
+                                    $errors+=errorMessage+'<br>';
+                                });
+                            });
+                            swal({
+                                type: 'error',
+                                title: $data.message,
+                                html:$errors
+                            });
+                            getBackUpdateProfile();
                         }
                     }
                 });
@@ -178,7 +200,21 @@
                         $('.statusUpdateAvatar').hide();
                     },
                     error:function(result) {
-                        alert("We're having a problem right now and please try later.");
+                        var $data=jQuery.parseJSON(result.responseText);
+                        var $errors='';
+
+                        Object.keys($data.errors).forEach(key => {
+                            $data.errors[key].forEach(errorMessage => {
+                                $errors+=errorMessage+'<br>';
+                            });
+                        });
+
+                        $('#userProfileCard').html(formHtmlval);
+                        swal({
+                            type: 'error',
+                            title: $data.message,
+                            html:$errors
+                        });
                     }
                 });
                 updateAvatarForm[0].reportValidity();

@@ -2,5 +2,7 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/css/custom.css": "/css/custom.css",
-    "/js/custom.js": "/js/custom.js"
+    "/css/sweetalert.css": "/css/sweetalert.css",
+    "/js/custom.js": "/js/custom.js",
+    "/js/sweetalert.js": "/js/sweetalert.js"
 }

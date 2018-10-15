@@ -87,19 +87,26 @@ class UserController extends Controller
             'newPassword' => 'required|string|min:6|confirmed',
         ]);
 
-        $user=User::find($id);
+        //if user want edit another user profile, abort
+        if(Auth::id()==$id){
 
-        if(Hash::check($request->currentPassword, $user->password))
-        {
-            $user->name=$request->name;
-            $user->email=$request->email;
-            $user->password=bcrypt($request->newPassword);
-            $user->save();
+            $user=User::find($id);
 
-            return response()->json(['message'=>'User successfully updated'],200);
+            if(Hash::check($request->currentPassword, $user->password))
+            {
+                $user->name=$request->name;
+                $user->email=$request->email;
+                $user->password=bcrypt($request->newPassword);
+                $user->save();
+
+                return response()->json(['message'=>'User successfully updated'],200);
+            }
+            else{
+                return response()->json(['message'=>"Your old password looks wrong. Please re-type current password"],401);
+            }
         }
         else{
-            return response()->json(['message'=>"Your old password looks wrong. Please re-type current password"],401);
+            return abort(404);
         }
 
     }
