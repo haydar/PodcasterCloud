@@ -130,6 +130,13 @@ class PodcastController extends Controller
      */
     public function destroy(Podcast $podcast)
     {
-        //
+        if ($podcast->user_id==Auth::id()){
+            $podcast->delete();
+
+            return response()->json(['message'=>'Podcast successfully deleted'],200);
+        }
+        else{
+            abort(404);
+        }
     }
 }
