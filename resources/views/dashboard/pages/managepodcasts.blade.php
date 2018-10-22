@@ -22,7 +22,7 @@
                         </div>
                     </td>
                     <td class="col-md-3">
-                        <form role="form" method="POST" id="deletePodcast" action="{{route('podcast.destroy',$podcast->id)}}">
+                        <form role="form" method="POST" action="{{route('podcast.destroy',$podcast->id)}}">
                             <button type="submit" class="btn btn-danger">Sil</button>
                         </form>
                     </td>
@@ -33,6 +33,7 @@
         @endisset
 </div>
 @endsection
+<<<<<<< HEAD
 
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.5/sweetalert2.all.js" integrity="sha256-+yrurPEYDIh9PES+m128Vc0a49Csb6lx0lSzXjX62HQ=" crossorigin="anonymous"></script>
@@ -75,3 +76,5 @@
     });
 </script>
 @endsection
+=======
+>>>>>>> parent of cb09df77... podcast delete dialog added on managePodcasts page
