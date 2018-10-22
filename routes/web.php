@@ -26,11 +26,10 @@ Route::group(['prefix'=>'manage','middleware' => 'auth'], function() {
 
     Route::get('/', 'PodcastController@index');
 
-    Route::post('user','UserController@index');
+    Route::resource('podcast', 'PodcastController');
 
-    Route::resource('user', 'UserController')->except(['create', 'store']);
+    Route::resource('podcast.user', 'UserController')->except(['create', 'store']);
 
     Route::post('user/{id}/updateAvatar', 'UserController@postUpdateAvatar')->name('user.updateAvatar');
 
-    Route::resource('podcast', 'PodcastController');
 });

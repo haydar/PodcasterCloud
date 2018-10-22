@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return redirect()->route('user.show', Auth::id());
+        return redirect()->route('podcast.user.show', Auth::id());
     }
 
     /**

@@ -15,7 +15,7 @@
         <div class="sidebar-wrapper ps-container ps-theme-default ps-active-x" data-ps-id="dbffba71-a360-4705-1a8a-5ef820a81fef">
             <ul class="nav">
                 <li class="active">
-                    <a href="">
+                    <a href="{{$podcast->slug}}">
                         <i class="nc-icon nc-bank"></i>
                         <p>Dashboard</p>
                     </a>

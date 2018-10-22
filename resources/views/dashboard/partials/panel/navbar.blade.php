@@ -46,7 +46,7 @@
                         </p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="{{route('user.show',Auth::id())}}">Your Profile</a>
+                        <a class="dropdown-item" href="{{route('podcast.user.show',[$podcast->slug,Auth::id()])}}">Your Profile</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">Logout</a>

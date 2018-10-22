@@ -82,6 +82,8 @@ class PodcastController extends Controller
         $podcast->itunesSummary=Purifier::clean($request->itunesSummary);
 
         $podcast->save();
+
+        return redirect()->route('podcast.show',$podcast->slug);
     }
 
     /**
