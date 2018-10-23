@@ -38,15 +38,15 @@
                         </div>
                       </li>
                 <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="nc-icon nc-single-02"></i>
-                        <p>
-                            <span class="d-none d-md-block" id="navbar-username">{{Auth::user()->name}}</span>
-                            <span class="d-lg-none d-md-block">Account</span>
-                        </p>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="nc-icon nc-single-02"></i>
+                            <p>
+                                <span class="d-none d-md-block" id="navbar-username">{{Auth::user()->name}}</span>
+                                <span class="d-lg-none d-md-block">Account</span>
+                            </p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="{{route('podcast.user.show',[$podcast->slug,Auth::id()])}}">Your Profile</a>
+                        <a class="dropdown-item" href="{{route('user.show',Auth::id())}}">Your Profile</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">Logout</a>
