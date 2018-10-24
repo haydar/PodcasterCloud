@@ -53,7 +53,10 @@ class UserController extends Controller
         {
             $podcast=app(PodcastController::class)->getPodcast($slug);
 
-            return view('dashboard.pages.userShow')->withPodcast($podcast);
+            if ($podcast!=null)
+                return view('dashboard.pages.userShow')->withPodcast($podcast);
+            else
+                return abort(404);
         }
         else
         {
@@ -90,8 +93,8 @@ class UserController extends Controller
         ]);
 
         //if user want edit another user profile, abort
-        if(Auth::id()==$id){
-
+        if(Auth::id()==$id)
+        {
             $user=User::find($id);
 
             if(Hash::check($request->currentPassword, $user->password))
@@ -139,7 +142,8 @@ class UserController extends Controller
 
         $user=User::find($id);
 
-        if ($request->hasFile('avatar')) {
+        if ($request->hasFile('avatar'))
+        {
             $image=$request->file('avatar');
             $filename=str_replace(' ','',$request->name.'-'.time().'.'.$image->getClientOriginalExtension());
             $location=public_path('images/profileAvatar'.$filename);
