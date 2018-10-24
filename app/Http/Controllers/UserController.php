@@ -53,6 +53,7 @@ class UserController extends Controller
         {
             $podcast=app(PodcastController::class)->getPodcast($slug);
 
+            //If there is no podcast with given slug, abort
             if ($podcast!=null)
                 return view('dashboard.pages.userShow')->withPodcast($podcast);
             else
