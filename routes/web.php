@@ -28,7 +28,9 @@ Route::group(['prefix'=>'manage','middleware' => 'auth'], function() {
 
     Route::resource('podcast', 'PodcastController');
 
-    Route::resource('user', 'UserController')->except(['create', 'store']);
+    Route::resource('user', 'UserController')->except(['create', 'show', 'store']);
+
+    Route::get('users/{id}/podcast/{slug}','UserController@show')->name('user.show');
 
     Route::post('user/{id}/updateAvatar', 'UserController@postUpdateAvatar')->name('user.updateAvatar');
 

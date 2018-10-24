@@ -10,6 +10,13 @@ use Purifier;
 
 class PodcastController extends Controller
 {
+    public function getPodcast($slug)
+    {
+        $podcast=Podcast::Where('slug',$slug)->first();
+
+        return $podcast;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -94,8 +101,7 @@ class PodcastController extends Controller
      */
     public function show($slug)
     {
-        $podcast=Podcast::Where('slug',$slug)->first();
-
+        $podcast=$this->getPodcast($slug);
         if(Auth::id()==$podcast->user_id){
             return view('dashboard.pages.home')->withPodcast($podcast);
         }

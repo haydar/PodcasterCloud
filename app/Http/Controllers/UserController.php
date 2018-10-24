@@ -47,11 +47,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,$slug)
     {
         if(Auth::id()==$id)
         {
-            return view('dashboard.pages.userShow');
+            $podcast=app(PodcastController::class)->getPodcast($slug);
+            return view('dashboard.pages.userShow')->withPodcast($podcast);
         }
         else
         {
