@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return redirect()->route('podcast.show', Auth::id());
+
     }
 
     /**
@@ -52,11 +52,12 @@ class UserController extends Controller
         if(Auth::id()==$id)
         {
             $podcast=app(PodcastController::class)->getPodcast($slug);
+
             return view('dashboard.pages.userShow')->withPodcast($podcast);
         }
         else
         {
-            //if user want access another user profile, abort
+            //If user want access another user profile, abort
             return abort(404);
         }
     }

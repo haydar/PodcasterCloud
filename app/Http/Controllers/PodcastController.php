@@ -10,6 +10,12 @@ use Purifier;
 
 class PodcastController extends Controller
 {
+    /**
+     * Find Podcast in database
+     *
+     * @param string $slug
+     * @return \app\Podcast
+     */
     public function getPodcast($slug)
     {
         $podcast=Podcast::Where('slug',$slug)->first();
@@ -102,8 +108,16 @@ class PodcastController extends Controller
     public function show($slug)
     {
         $podcast=$this->getPodcast($slug);
-        if(Auth::id()==$podcast->user_id){
-            return view('dashboard.pages.home')->withPodcast($podcast);
+
+        if ($podcast!=null)
+        {
+            if(Auth::id()==$podcast->user_id){
+                return view('dashboard.pages.home')->withPodcast($podcast);
+            }
+        }
+        else
+        {
+            return abort(404);
         }
     }
 
@@ -138,12 +152,14 @@ class PodcastController extends Controller
      */
     public function destroy(Podcast $podcast)
     {
-        if ($podcast->user_id==Auth::id()){
+        if ($podcast->user_id==Auth::id())
+        {
             $podcast->delete();
 
             return response()->json(['message'=>'Podcast successfully deleted'],200);
         }
-        else{
+        else
+        {
             abort(404);
         }
     }
