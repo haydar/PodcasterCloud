@@ -14,13 +14,13 @@
         </div>
         <div class="sidebar-wrapper ps-container ps-theme-default ps-active-x" data-ps-id="dbffba71-a360-4705-1a8a-5ef820a81fef">
             <ul class="nav">
-                <li class="{{ Request::is('manage/podcast/'.$podcast->slug.'') ? 'active' : 'no' }}">
+                <li class="{{ Request::is('*/podcast/'.$podcast->slug.'') ? 'active' : 'no' }}">
                     <a href="{{route('podcast.show',$podcast->slug)}}">
                         <i class="nc-icon nc-bank"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="{{ Request::is('manage/podcast/*') ? 'active' : 'no' }}">
+                <li class="{{ Request::is('manage/podcast/*/episode') ? 'active' : 'no' }}">
                     <a data-toggle="collapse" href="#episodeSection" class="collapse justify-align-center">
                         <i class="nc-icon nc-bullet-list-67"></i>
                         <p>
@@ -28,10 +28,10 @@
                             <b class="caret mt-2"></b>
                         </p>
                     </a>
-                    <div class="collapse" id="episodeSection" style="">
+                    <div class="collapse {{ Request::is('manage/podcast/*/episode') ? 'show' : 'no' }}" href="{{route('podcast.episode.index',$podcast->slug)}}" id="episodeSection" style="">
                         <ul class="nav">
-                            <li>
-                                <a class="ml-5 text-capitalize" href="">
+                            <li class="{{ Request::is('manage/podcast/*/episode') ? 'active' : 'no' }}">
+                            <a class="ml-5 text-capitalize {{ Request::is('manage/podcast/*/episode') ? 'active' : 'no' }}" href="{{route('podcast.episode.index',$podcast->slug)}}">
                                     <span class="sidebar-normal"> All Episodes</span>
                                 </a>
                             </li>

@@ -32,6 +32,8 @@ Route::group(['prefix'=>'manage','middleware' => 'auth'], function() {
 
     Route::get('users/{id}/podcast/{slug}','UserController@show')->name('user.show');
 
+    Route::resource('podcast.episode', 'EpisodeController')->except(['show']);
+
     Route::post('user/{id}/updateAvatar', 'UserController@postUpdateAvatar')->name('user.updateAvatar');
 
 });

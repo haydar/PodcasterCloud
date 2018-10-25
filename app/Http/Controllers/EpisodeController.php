@@ -12,9 +12,19 @@ class EpisodeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($podcastSlug)
     {
-        //
+        $podcast=app(PodcastController::class)->getPodcast($podcastSlug);
+
+        //If there is no podcast with given slug, abort
+        if ($podcast!=null)
+        {
+            return view('dashboard.pages.episodeIndex')->withPodcast($podcast);
+        }
+        else
+        {
+            return abort(404);
+        }
     }
 
     /**
