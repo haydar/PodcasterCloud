@@ -36,7 +36,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="ml-5 text-capitalize"href="">
+                                <a class="ml-5 text-capitalize" href="">
                                     <span class="sidebar-normal"> Upload Episode</span>
                                 </a>
                             </li>

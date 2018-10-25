@@ -389,6 +389,7 @@ class ComposerStaticInitdef005d50fcf1f68f3d2c983505c9c47
 
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Episode' => __DIR__ . '/../..' . '/app/Episode.php',
         'App\\Events\\NewUser' => __DIR__ . '/../..' . '/app/Events/NewUser.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -396,6 +397,7 @@ class ComposerStaticInitdef005d50fcf1f68f3d2c983505c9c47
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\EpisodeController' => __DIR__ . '/../..' . '/app/Http/Controllers/EpisodeController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\PodcastController' => __DIR__ . '/../..' . '/app/Http/Controllers/PodcastController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
