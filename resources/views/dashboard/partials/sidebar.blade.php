@@ -32,12 +32,12 @@
                         <ul class="nav">
                             <li>
                                 <a class="ml-5 text-capitalize" href="">
-                                    <span class="sidebar-normal"> All Episodes </span>
+                                    <span class="sidebar-normal"> All Episodes</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="ml-5 text-capitalize"href="">
-                                    <span class="sidebar-normal"> Upload Episodes </span>
+                                    <span class="sidebar-normal"> Upload Episode</span>
                                 </a>
                             </li>
                         </ul>
@@ -47,30 +47,6 @@
                     <a href="">
                         <i class="nc-icon nc-pin-3"></i>
                         <p>Maps</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <i class="nc-icon nc-bell-55"></i>
-                        <p>Notifications</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <i class="nc-icon nc-single-02"></i>
-                        <p>User Profile</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <i class="nc-icon nc-tile-56"></i>
-                        <p>Table List</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <i class="nc-icon nc-caps-small"></i>
-                        <p>Typography</p>
                     </a>
                 </li>
             </ul>
