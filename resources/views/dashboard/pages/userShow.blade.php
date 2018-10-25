@@ -1,9 +1,6 @@
 
 @extends('dashboard.layouts.master')
 @section('title',$podcast->slug)
-@section('css')
-    <link href="{{asset('css/sweetalert.css')}}" rel="stylesheet" />
-@endsection
 @section('content')
 <div class="content">
     <div class="row">
