@@ -31,12 +31,12 @@
                     <div class="collapse {{ Request::is('manage/podcast/*/episode') ? 'show' : 'no' }}" href="{{route('podcast.episode.index',$podcast->slug)}}" id="episodeSection" style="">
                         <ul class="nav">
                             <li class="{{ Request::is('manage/podcast/*/episode') ? 'active' : 'no' }}">
-                            <a class="ml-5 text-capitalize {{ Request::is('manage/podcast/*/episode') ? 'active' : 'no' }}" href="{{route('podcast.episode.index',$podcast->slug)}}">
+                            <a class="ml-5 text-capitalize {{ Request::is('manage/podcast/*/episode') ? 'active' : 'no' }}" href="{{route('podcast.episode.index', $podcast->slug)}}">
                                     <span class="sidebar-normal"> All Episodes</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="ml-5 text-capitalize" href="">
+                                <a class="ml-5 text-capitalize {{ Request::is('manage/podcast/*/episode/create') ? 'active' : 'no' }}" href="{{route('podcast.episode.create',$podcast->slug)}}">
                                     <span class="sidebar-normal"> Upload Episode</span>
                                 </a>
                             </li>

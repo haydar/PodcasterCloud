@@ -155,7 +155,7 @@
                             <label for="author-name">Podcast Author</label>
                             <input type="text" required name="authorName" placeholder="Author Name" value="{{ old('name') }}" class="form-control" id="author-name">
                     </div>
-                    <p>If you are not using iTunes, this section is optional, but if you are using iTunes at present,
+                    <p>This section is optional, If you are not using iTunes, but if you are using iTunes at present,
                         you should fill all fields, because iTunes needs more pieces of information.</p>
                     <div class="form-group row">
                         <label for="itunes">iTunes Email Adress</label>
