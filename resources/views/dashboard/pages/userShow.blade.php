@@ -186,6 +186,8 @@
                     url:"{{route('user.updateAvatar',Auth::id())}}",
                     type:'POST',
                     dataType:'JSON',
+                    contentType: false,
+			        processData: false,
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },

@@ -7,6 +7,7 @@ use Auth;
 use App\User;
 use Hash;
 use Session;
+use Storage;
 
 class UserController extends Controller
 {
@@ -146,9 +147,11 @@ class UserController extends Controller
         if ($request->hasFile('avatar'))
         {
             $image=$request->file('avatar');
-            $filename=str_replace(' ','',$request->name.'-'.time().'.'.$image->getClientOriginalExtension());
-            $location=public_path('images/profileAvatar'.$filename);
-            Image::make($image)->resize(400,400)->save($location);
+            $filename=str_replace(' ','',$request->name).'-'.time().'.'.$image->getClientOriginalExtension();
+            $location=public_path('temp/'.$filename);
+            Image::make($image)->resize(400,300)->encode('jpg')->save($location);
+            $imagePath=Storage::disk('doSpaces')->putFileAs('uploads/podcastImages',$image, $filename,'public');
+            unlink($location);
 
             //Delete old avatar if user's avatar isn't default avatar
             if (!$user->avatar=='user.jpg') {

@@ -8,6 +8,7 @@ use Auth;
 use Image;
 use Purifier;
 use Storage;
+use Illuminate\Http\File;
 
 class PodcastController extends Controller
 {
@@ -85,9 +86,10 @@ class PodcastController extends Controller
         {
             $originalImage=$request->file('artworkImage');
             $filename=str_replace(' ','',$request->name).'-'.time().'.'.$originalImage->getClientOriginalExtension();
-            $location=public_path('temp/'.$filename);
+            $location=public_path('temp\\'.$filename);
             Image::make($originalImage)->resize(400,300)->encode('jpg')->save($location);
-            $imagePath=Storage::disk('doSpaces')->putFileAs('uploads/podcastImages',$originalImage, $filename,'public');
+            dd(new File($location));
+            Storage::disk('doSpaces')->putFileAs('uploads/podcastImages',new File($location), $filename,'public');
             unlink($location);
         }
 
