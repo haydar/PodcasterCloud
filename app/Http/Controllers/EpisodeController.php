@@ -32,9 +32,19 @@ class EpisodeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($podcastSlug)
     {
-        //
+        $podcast=app(PodcastController::class)->getPodcast($podcastSlug);
+
+        //If there is no podcast with given slug, abort
+        if ($podcast!=null)
+        {
+            return view('dashboard.pages.episodeCreate')->withPodcast($podcast);
+        }
+        else
+        {
+            return abort(404);
+        }
     }
 
     /**

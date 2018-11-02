@@ -181,6 +181,8 @@
         $(document).on('click','#updateAvatar',function () {
             var updateAvatarForm=document.getElementsByClassName('updateAvatarForm');
             var isFormValid=updateAvatarForm[0].checkValidity();
+            console.log(isFormValid);
+
             if (isFormValid) {
                 $.ajax({
                     url:"{{route('user.updateAvatar',Auth::id())}}",

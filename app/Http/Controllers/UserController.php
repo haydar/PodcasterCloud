@@ -149,13 +149,15 @@ class UserController extends Controller
             $image=$request->file('avatar');
             $filename=str_replace(' ','',$request->name).'-'.time().'.'.$image->getClientOriginalExtension();
             $location=public_path('temp/'.$filename);
-            Image::make($image)->resize(400,300)->encode('jpg')->save($location);
-            $imagePath=Storage::disk('doSpaces')->putFileAs('uploads/podcastImages',$image, $filename,'public');
+            Image::make($image)->resize(400,400)->encode('jpg')->save($location);
+            $imagePath=Storage::disk('doSpaces')->putFileAs('uploads/profileAvatars',$image, $filename,'public');
             unlink($location);
 
             //Delete old avatar if user's avatar isn't default avatar
             if (!$user->avatar=='user.jpg') {
-                Storage::delete('images/profileAvatar'.$user->avatar);
+                if(Storage::disk('doSpaces')->exists('uploads/profileAvatars'.$filename)) {
+                    Storage::disk('doSpaces')->delete('uploads/profileAvatars'.$filename);
+                }
             }
 
             $user->avatar=$filename;
