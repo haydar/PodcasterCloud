@@ -7,8 +7,10 @@
             <h3>dcdcdc</h3>
         </div>
         <div class="card-body">
-            <form action="{{}}" method="post">
-                
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for=""></label>
+                </div>
             </form>
         </div>
     </div>

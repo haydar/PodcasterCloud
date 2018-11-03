@@ -10,6 +10,7 @@ class EpisodeController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param string $podcastSlug
      * @return \Illuminate\Http\Response
      */
     public function index($podcastSlug)
@@ -30,6 +31,7 @@ class EpisodeController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param string $podcastSlug
      * @return \Illuminate\Http\Response
      */
     public function create($podcastSlug)
@@ -50,12 +52,26 @@ class EpisodeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param string $podcastSlug
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $podcastSlug)
     {
-        //
+        $podcast=app(PodcastController::class)->getPodcast($podcastSlug);
+
+        if ($podcast!=null)
+        {
+            $this->validate($request,array(
+                'title'=>'required|string|max:255',
+                'description'=>'required|string',
+                'image'=>'image'
+            ));
+        }
+        else
+        {
+            return abort(404);
+        }
     }
 
     /**

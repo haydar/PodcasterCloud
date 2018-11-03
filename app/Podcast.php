@@ -10,11 +10,6 @@ class Podcast extends Model
 {
     use Sluggable;
 
-    public function user()
-    {
-        $this->belongsTo(User::class);
-    }
-
     public function sluggable()
     {
         return [
@@ -22,5 +17,15 @@ class Podcast extends Model
                 'source' => 'name'
             ]
         ];
+    }
+
+    public function user()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function episode()
+    {
+        $this->hasOne(Episode::class);
     }
 }
