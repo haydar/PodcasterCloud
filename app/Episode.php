@@ -13,7 +13,7 @@ class Episode extends Model
     {
         return [
             'slug' => [
-                'source' => 'name'
+                'source' => 'title'
             ]
         ];
     }
@@ -21,5 +21,10 @@ class Episode extends Model
     public function podcast()
     {
         $this->belongsTo(Podcast::class);
+    }
+
+    public function audio_file()
+    {
+        return $this->hasOne(AudioFile::class);
     }
 }
