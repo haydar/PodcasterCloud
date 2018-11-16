@@ -34,6 +34,8 @@ Route::group(['prefix'=>'manage','middleware' => 'auth'], function() {
 
     Route::resource('podcast.episode', 'EpisodeController')->except(['show']);
 
+    Route::post('/podcast/{podcast}/episode/upload','EpisodeController@uploadEpisodeAudioFile')->name('podcast.episode.upload');
+
     Route::post('user/{id}/updateAvatar', 'UserController@postUpdateAvatar')->name('user.updateAvatar');
 
 });
