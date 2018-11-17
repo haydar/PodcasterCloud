@@ -31,6 +31,7 @@
             </div>
         </div>
         <div class="col-md-8">
+
             <div class="card card-user col-md-11" id="userProfileCard">
                 <div class="card-header">
                     <h5 class="card-title float-left">
@@ -209,7 +210,7 @@
                             $data.errors[key].forEach(errorMessage => {
                                 $errors+=errorMessage+'<br>';
                             });
-                        });
+                        });""
 
                         $('#userProfileCard').html(formHtmlval);
                         swal({

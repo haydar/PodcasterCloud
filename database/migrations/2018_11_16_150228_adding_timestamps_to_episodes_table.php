@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddingAvatarToUsersTable extends Migration
+class AddingTimestampsToEpisodesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddingAvatarToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('avatar')->nullable();
+        Schema::table('episodes', function (Blueprint $table) {
+            $table->timestamps();
         });
     }
 
@@ -25,8 +25,9 @@ class AddingAvatarToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('avatar');
+        Schema::table('episodes', function (Blueprint $table) {
+            $table->dropColumn('created_at');
+            $table->dropColumn('uploaded_at');
         });
     }
 }

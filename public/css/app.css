@@ -16919,3 +16919,7 @@ License - nucleoapp.com/license/
   }
 }
 
+.border-dashed {
+  border-style: dashed !important;
+}
+

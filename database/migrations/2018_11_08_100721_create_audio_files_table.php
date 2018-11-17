@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEpisodesTable extends Migration
+class CreateAudioFilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateEpisodesTable extends Migration
      */
     public function up()
     {
-        Schema::create('episodes', function (Blueprint $table) {
-            $table->increments('id')->unsigned()->index();
+        Schema::create('audio_files', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
+            $table->string('file');
             $table->integer('podcast_id')->unsigned()->index();
-            $table->string('title',255);
-            $table->string('slug');
-            $table->string('description');
-            $table->string('image')->nullable();
-            $table->string('audio');
-            $table->boolean('explicit')->default(false);
 
             $table->foreign('podcast_id')->references('id')->on('podcasts')->onDelete('cascade');
         });
@@ -34,6 +30,6 @@ class CreateEpisodesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('episodes');
+        Schema::dropIfExists('audio_files');
     }
 }
