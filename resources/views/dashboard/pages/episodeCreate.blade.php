@@ -49,7 +49,7 @@
                     </div>
                     <div class="form-group">
                         <label class="font-weight-bold" for="description">Description :</label>
-                        <textarea id='editor' required name="description" rows="10" cols="20"></textarea>
+                        <textarea id='editor'  name="description" rows="10" cols="20"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="explicit">Explicit :</label>
@@ -69,7 +69,6 @@
 @section('js')
 <script src="https://cdn.ckeditor.com/ckeditor5/11.1.1/classic/ckeditor.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.5/sweetalert2.all.js" integrity="sha256-+yrurPEYDIh9PES+m128Vc0a49Csb6lx0lSzXjX62HQ=" crossorigin="anonymous"></script>
-
 <script>
     $(document).ready(function(){
         let editor;
@@ -165,10 +164,16 @@
         createEpisodeButton.onclick=function(e){
             var audioFileId=document.getElementById('audioFile').value;
             var formData=new FormData(document.getElementById('createEpisodeForm'));
-            var isValid=document.getElementById('createEpisodeForm').checkValidity();
+            var isFormValid=document.getElementById('createEpisodeForm').checkValidity();
             formData.append('description',editor.getData());
-            console.log(isValid);
-            if(!isNaN(audioFileId)){
+            console.log('Audio File ID null status : '+ (audioFileId==""));
+            console.log('number valid : ' +(!isNaN(audioFileId)));
+            var audioFileValid=(!isNaN(audioFileId))&&(!audioFileId=="");
+            console.log('Audio File Valid'+audioFileValid);
+
+            if(audioFileValid&&isFormValid)
+            {
+                e.preventDefault();
                 $.ajax({
                     url:"{{route('podcast.episode.store',$podcast->slug)}}",
                     dataType:'JSON',
@@ -180,13 +185,24 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     data:formData,
+                    success:function(result){
+                        swal({
+                                type: 'success',
+                                title: 'Episode Created!',
+                        });
+                        document.getElementById('createEpisodeForm').reset();
+                        document.getElementById('uploadAudioForm').reset();
+                        $('#uploadAudioCard').fadeIn(1000);
+                        $('#createEpisodeCard').fadeOut(1000);
+                        editor.setData('');
+
+                    },
                     error:function(result){
                         var $data=jQuery.parseJSON(result.responseText);
                         $errors="";
 
                         if (result.status=='422')
                         {
-                            console.log($data);
                             Object.keys($data.errors).forEach(key => {
                                 $data.errors[key].forEach(errorMessage => {
                                     $errors+=errorMessage+'<br>';
@@ -204,11 +220,12 @@
             }
             else
             {
-                if (isValid)
+                if (isFormValid)
                 {
+                    e.preventDefault();
                     swal({
-                        type: 'error',
-                        title: 'Oops...',
+                        type: 'warning',
+                        title: 'Please Wait',
                         text:'Your file is still uploading...'
                     });
                 }
