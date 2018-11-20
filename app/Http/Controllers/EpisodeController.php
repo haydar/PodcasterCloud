@@ -9,6 +9,8 @@ use Illuminate\Http\File;
 use Auth;
 use Image;
 use Storage;
+use getID3;
+
 
 class EpisodeController extends Controller
 {
@@ -139,7 +141,7 @@ class EpisodeController extends Controller
 
                 $episode->image=$filename;
             }
-            
+
             $audioFile=AudioFile::where(['id'=>$request->audioFile,
                                         'podcast_id'=>$podcast->id])->first();
 
@@ -147,6 +149,10 @@ class EpisodeController extends Controller
             {
                 $filename=$audioFile->file;
                 $audioFileLocation=public_path('temp\\'.$audioFile->file);
+                $episode->length=filesize($audioFileLocation);
+                $audioMeta = new getID3();
+                $audioMetaData=$audioMeta->analyze($audioFileLocation);
+                $episode->duration= $audioMetaData['playtime_string'];
 
                 if (file_exists($audioFileLocation))
                 {
