@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AudioFile;
 use App\Episode;
+use App\Jobs\CreateEpisode;
 use Illuminate\Http\Request;
 use Illuminate\Http\File;
 use Auth;
@@ -124,10 +125,15 @@ class EpisodeController extends Controller
             $episode=new Episode;
 
             $episode->title=$request->title;
-            $episode->subtitle=$request->subtitle;
+
+            if($request->has('subtitle'))
+                $episode->subtitle=$request->subtitle;
+            else
+                $episode->subtitle=$podcast->subtitle;
+
             $episode->description=$request->description;
             $episode->explicit=$request->explicit;
-
+            $episode->podcast_id=$podcast->id;
 
             //if there is custom episode image, upload episode's image to DigitalOcean Spaces
             if($request->hasFile('image'))
@@ -147,29 +153,8 @@ class EpisodeController extends Controller
 
             if($audioFile!=null)
             {
-                $filename=$audioFile->file;
-                $audioFileLocation=public_path('temp\\'.$audioFile->file);
-                $episode->length=filesize($audioFileLocation);
-                $audioMeta = new getID3();
-                $audioMetaData=$audioMeta->analyze($audioFileLocation);
-                $episode->duration= $audioMetaData['playtime_string'];
-
-                if (file_exists($audioFileLocation))
-                {
-                    Storage::disk('doSpaces')->putFileAs('uploads/episodes/episodeAudio', new File($audioFileLocation),$filename,'public');
-                    unlink($audioFileLocation);
-                    $episode->podcast_id=$podcast->id;
-                    $episode->audio=$filename;
-                    $episode->save();
-                    $audioFile->delete();
-
-                    return response()->json(['message'=>'Episode successfully created.'],200);
-                }
-                else
-                {
-                    return response()->json(['message'=>"Episode's audio file not found on the server"],404);
-                }
-
+                CreateEpisode::dispatch($episode->toArray(),$audioFile);
+                return response()->json(['message'=>'Episode successfully sent.'],200);
             }
             else
             {
