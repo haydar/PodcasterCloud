@@ -8,13 +8,13 @@ class ComposerStaticInitdef005d50fcf1f68f3d2c983505c9c47
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
-        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
+        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        'b067bc7112e384b61c701452d53a14a8' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/JmesPath.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        'b067bc7112e384b61c701452d53a14a8' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/JmesPath.php',
         '8a9dc1de0ca7e01f3e08231539562f61' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/functions.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
@@ -97,6 +97,7 @@ class ComposerStaticInitdef005d50fcf1f68f3d2c983505c9c47
         'J' => 
         array (
             'JmesPath\\' => 9,
+            'JakubOnderka\\PhpConsoleHighlighter\\' => 35,
             'JakubOnderka\\PhpConsoleColor\\' => 29,
         ),
         'I' => 
@@ -284,6 +285,10 @@ class ComposerStaticInitdef005d50fcf1f68f3d2c983505c9c47
         array (
             0 => __DIR__ . '/..' . '/mtdowling/jmespath.php/src',
         ),
+        'JakubOnderka\\PhpConsoleHighlighter\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src',
+        ),
         'JakubOnderka\\PhpConsoleColor\\' => 
         array (
             0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
@@ -389,13 +394,6 @@ class ComposerStaticInitdef005d50fcf1f68f3d2c983505c9c47
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
             ),
         ),
-        'J' => 
-        array (
-            'JakubOnderka\\PhpConsoleHighlighter' => 
-            array (
-                0 => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src',
-            ),
-        ),
         'H' => 
         array (
             'HTMLPurifier' => 
@@ -442,6 +440,7 @@ class ComposerStaticInitdef005d50fcf1f68f3d2c983505c9c47
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Jobs\\CreateEpisode' => __DIR__ . '/../..' . '/app/Jobs/CreateEpisode.php',
         'App\\Listeners\\SendVerificitionMail' => __DIR__ . '/../..' . '/app/Listeners/SendVerificitionMail.php',
         'App\\Mail\\NewUserVerification' => __DIR__ . '/../..' . '/app/Mail/NewUserVerification.php',
         'App\\Podcast' => __DIR__ . '/../..' . '/app/Podcast.php',
@@ -521,6 +520,8 @@ class ComposerStaticInitdef005d50fcf1f68f3d2c983505c9c47
         'Aws\\Budgets\\BudgetsClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Budgets/BudgetsClient.php',
         'Aws\\Budgets\\Exception\\BudgetsException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Budgets/Exception/BudgetsException.php',
         'Aws\\CacheInterface' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/CacheInterface.php',
+        'Aws\\Chime\\ChimeClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Chime/ChimeClient.php',
+        'Aws\\Chime\\Exception\\ChimeException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Chime/Exception/ChimeException.php',
         'Aws\\ClientResolver' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ClientResolver.php',
         'Aws\\ClientSideMonitoring\\AbstractMonitoringMiddleware' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ClientSideMonitoring/AbstractMonitoringMiddleware.php',
         'Aws\\ClientSideMonitoring\\ApiCallAttemptMonitoringMiddleware' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ClientSideMonitoring/ApiCallAttemptMonitoringMiddleware.php',
@@ -663,6 +664,7 @@ class ComposerStaticInitdef005d50fcf1f68f3d2c983505c9c47
         'Aws\\ElasticsearchService\\Exception\\ElasticsearchServiceException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ElasticsearchService/Exception/ElasticsearchServiceException.php',
         'Aws\\Emr\\EmrClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Emr/EmrClient.php',
         'Aws\\Emr\\Exception\\EmrException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Emr/Exception/EmrException.php',
+        'Aws\\EndpointParameterMiddleware' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/EndpointParameterMiddleware.php',
         'Aws\\Endpoint\\EndpointProvider' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Endpoint/EndpointProvider.php',
         'Aws\\Endpoint\\Partition' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Endpoint/Partition.php',
         'Aws\\Endpoint\\PartitionEndpointProvider' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Endpoint/PartitionEndpointProvider.php',
@@ -793,6 +795,10 @@ class ComposerStaticInitdef005d50fcf1f68f3d2c983505c9c47
         'Aws\\PI\\Exception\\PIException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PI/Exception/PIException.php',
         'Aws\\PI\\PIClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PI/PIClient.php',
         'Aws\\PhpHash' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PhpHash.php',
+        'Aws\\PinpointEmail\\Exception\\PinpointEmailException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PinpointEmail/Exception/PinpointEmailException.php',
+        'Aws\\PinpointEmail\\PinpointEmailClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PinpointEmail/PinpointEmailClient.php',
+        'Aws\\PinpointSMSVoice\\Exception\\PinpointSMSVoiceException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PinpointSMSVoice/Exception/PinpointSMSVoiceException.php',
+        'Aws\\PinpointSMSVoice\\PinpointSMSVoiceClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PinpointSMSVoice/PinpointSMSVoiceClient.php',
         'Aws\\Pinpoint\\Exception\\PinpointException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Pinpoint/Exception/PinpointException.php',
         'Aws\\Pinpoint\\PinpointClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Pinpoint/PinpointClient.php',
         'Aws\\Polly\\Exception\\PollyException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Polly/Exception/PollyException.php',
@@ -801,6 +807,12 @@ class ComposerStaticInitdef005d50fcf1f68f3d2c983505c9c47
         'Aws\\Pricing\\Exception\\PricingException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Pricing/Exception/PricingException.php',
         'Aws\\Pricing\\PricingClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Pricing/PricingClient.php',
         'Aws\\PsrCacheAdapter' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PsrCacheAdapter.php',
+        'Aws\\QuickSight\\Exception\\QuickSightException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/QuickSight/Exception/QuickSightException.php',
+        'Aws\\QuickSight\\QuickSightClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/QuickSight/QuickSightClient.php',
+        'Aws\\RAM\\Exception\\RAMException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/RAM/Exception/RAMException.php',
+        'Aws\\RAM\\RAMClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/RAM/RAMClient.php',
+        'Aws\\RDSDataService\\Exception\\RDSDataServiceException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/RDSDataService/Exception/RDSDataServiceException.php',
+        'Aws\\RDSDataService\\RDSDataServiceClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/RDSDataService/RDSDataServiceClient.php',
         'Aws\\Rds\\AuthTokenGenerator' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Rds/AuthTokenGenerator.php',
         'Aws\\Rds\\Exception\\RdsException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Rds/Exception/RdsException.php',
         'Aws\\Rds\\RdsClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Rds/RdsClient.php',
@@ -819,8 +831,13 @@ class ComposerStaticInitdef005d50fcf1f68f3d2c983505c9c47
         'Aws\\RetryMiddleware' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/RetryMiddleware.php',
         'Aws\\Route53Domains\\Exception\\Route53DomainsException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Route53Domains/Exception/Route53DomainsException.php',
         'Aws\\Route53Domains\\Route53DomainsClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Route53Domains/Route53DomainsClient.php',
+        'Aws\\Route53Resolver\\Exception\\Route53ResolverException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Route53Resolver/Exception/Route53ResolverException.php',
+        'Aws\\Route53Resolver\\Route53ResolverClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Route53Resolver/Route53ResolverClient.php',
         'Aws\\Route53\\Exception\\Route53Exception' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Route53/Exception/Route53Exception.php',
         'Aws\\Route53\\Route53Client' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Route53/Route53Client.php',
+        'Aws\\S3Control\\Exception\\S3ControlException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/S3Control/Exception/S3ControlException.php',
+        'Aws\\S3Control\\S3ControlClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/S3Control/S3ControlClient.php',
+        'Aws\\S3Control\\S3ControlEndpointMiddleware' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/S3Control/S3ControlEndpointMiddleware.php',
         'Aws\\S3\\AmbiguousSuccessParser' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/S3/AmbiguousSuccessParser.php',
         'Aws\\S3\\ApplyChecksumMiddleware' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/S3/ApplyChecksumMiddleware.php',
         'Aws\\S3\\BatchDelete' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/S3/BatchDelete.php',
@@ -3095,7 +3112,7 @@ class ComposerStaticInitdef005d50fcf1f68f3d2c983505c9c47
         'Intervention\\Image\\Size' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/Size.php',
         'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/ConsoleColor.php',
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/InvalidStyleException.php',
-        'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/JakubOnderka/PhpConsoleHighlighter/Highlighter.php',
+        'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/Highlighter.php',
         'JmesPath\\AstRuntime' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/AstRuntime.php',
         'JmesPath\\CompilerRuntime' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/CompilerRuntime.php',
         'JmesPath\\DebugRuntime' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/DebugRuntime.php',
@@ -3291,6 +3308,7 @@ class ComposerStaticInitdef005d50fcf1f68f3d2c983505c9c47
         'Monolog\\Handler\\HandlerWrapper' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Handler/HandlerWrapper.php',
         'Monolog\\Handler\\HipChatHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Handler/HipChatHandler.php',
         'Monolog\\Handler\\IFTTTHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Handler/IFTTTHandler.php',
+        'Monolog\\Handler\\InsightOpsHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Handler/InsightOpsHandler.php',
         'Monolog\\Handler\\LogEntriesHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Handler/LogEntriesHandler.php',
         'Monolog\\Handler\\LogglyHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Handler/LogglyHandler.php',
         'Monolog\\Handler\\MailHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Handler/MailHandler.php',
@@ -3329,11 +3347,15 @@ class ComposerStaticInitdef005d50fcf1f68f3d2c983505c9c47
         'Monolog\\Processor\\MemoryUsageProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/MemoryUsageProcessor.php',
         'Monolog\\Processor\\MercurialProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/MercurialProcessor.php',
         'Monolog\\Processor\\ProcessIdProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/ProcessIdProcessor.php',
+        'Monolog\\Processor\\ProcessorInterface' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/ProcessorInterface.php',
         'Monolog\\Processor\\PsrLogMessageProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/PsrLogMessageProcessor.php',
         'Monolog\\Processor\\TagProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/TagProcessor.php',
         'Monolog\\Processor\\UidProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/UidProcessor.php',
         'Monolog\\Processor\\WebProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/WebProcessor.php',
         'Monolog\\Registry' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Registry.php',
+        'Monolog\\ResettableInterface' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/ResettableInterface.php',
+        'Monolog\\SignalHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/SignalHandler.php',
+        'Monolog\\Utils' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Utils.php',
         'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Laravel/CollisionServiceProvider.php',
         'NunoMaduro\\Collision\\Adapters\\Laravel\\ExceptionHandler' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Laravel/ExceptionHandler.php',
         'NunoMaduro\\Collision\\Adapters\\Laravel\\Inspector' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Laravel/Inspector.php',
@@ -4118,6 +4140,7 @@ class ComposerStaticInitdef005d50fcf1f68f3d2c983505c9c47
         'Psr\\Log\\NullLogger' => __DIR__ . '/..' . '/psr/log/Psr/Log/NullLogger.php',
         'Psr\\Log\\Test\\DummyTest' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/LoggerInterfaceTest.php',
         'Psr\\Log\\Test\\LoggerInterfaceTest' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/LoggerInterfaceTest.php',
+        'Psr\\Log\\Test\\TestLogger' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/TestLogger.php',
         'Psr\\SimpleCache\\CacheException' => __DIR__ . '/..' . '/psr/simple-cache/src/CacheException.php',
         'Psr\\SimpleCache\\CacheInterface' => __DIR__ . '/..' . '/psr/simple-cache/src/CacheInterface.php',
         'Psr\\SimpleCache\\InvalidArgumentException' => __DIR__ . '/..' . '/psr/simple-cache/src/InvalidArgumentException.php',
