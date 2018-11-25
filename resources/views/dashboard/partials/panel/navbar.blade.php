@@ -11,8 +11,8 @@
             </div>
             <a class="navbar-brand" href="#">@isset($podcast->name) {{$podcast->name." Podcast"}} @endisset</a>
 
-        <a class="btn btn-round btn-success btn-sm text-white" href="{{route('podcast.episode.create',$podcast->slug)}}" style="text-transform:none;">
-                <i class="nc-icon nc-cloud-upload-94"></i>  Create Episode
+        <a class="btn btn-round btn-success btn-sm text-white ml-4" href="{{route('podcast.episode.create',$podcast->slug)}}" style="text-transform:none;">
+                <i class="nc-icon nc-cloud-upload-94"></i> <span class="d-none d-md-inline-block">Create Episode</span>
             </a>
         </div>
 
