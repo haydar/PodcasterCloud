@@ -3,24 +3,10 @@
         <nav>
             <ul>
                 <li>
-                    <a href="https://www.creative-tim.com">
-            Creative Tim
-        </a>
+                    <a href="{{URL::to('/')}}">Podcaster Cloud</a>
                 </li>
                 <li>
-                    <a href="http://presentation.creative-tim.com">
-           About Us
-        </a>
-                </li>
-                <li>
-                    <a href="http://blog.creative-tim.com">
-           Blog
-        </a>
-                </li>
-                <li>
-                    <a href="https://github.com/creativetimofficial/paper-dashboard-2/blob/master/LICENSE.md">
-            MIT License
-        </a>
+                    <a href="{{URL::to('/')}}/aboutus">About Us</a>
                 </li>
             </ul>
         </nav>
@@ -28,7 +14,7 @@
             &copy;
             <script>
                 document.write(new Date().getFullYear())
-            </script> Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+            </script> Coded by a Podcast Lover Team </a>.
         </div>
     </div>
 </footer>

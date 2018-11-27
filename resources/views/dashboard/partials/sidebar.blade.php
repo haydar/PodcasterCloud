@@ -44,9 +44,9 @@
                 </div>
             </li>
             <li>
-                <a href="">
-                    <i class="nc-icon nc-pin-3"></i>
-                    <p>Maps</p>
+                <a href="{{route('podcast.index')}}">
+                    <i class="nc-icon nc-minimal-left"></i>
+                    <p>Return Podcasts</p>
                 </a>
             </li>
         </ul>
