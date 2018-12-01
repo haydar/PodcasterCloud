@@ -28,7 +28,9 @@ class EpisodeController extends Controller
         //If there is no podcast with given slug, abort
         if ($podcast!=null)
         {
-            return view('dashboard.pages.episodeIndex')->withPodcast($podcast);
+            $episodes=Episode::where('podcast_id',$podcast->id)->get();
+            return view('dashboard.pages.episodeIndex')->withPodcast($podcast)
+                                                        ->withEpisodes($episodes);
         }
         else
         {
