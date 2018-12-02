@@ -173,12 +173,34 @@ class EpisodeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Episode  $episode
+     * @param  string  $episodeSlug
+     * @param  string $podcastSlug
      * @return \Illuminate\Http\Response
      */
-    public function show(Episode $episode)
+    public function show($podcastSlug, $episodeSlug)
     {
-        //
+        $podcast=app(PodcastController::class)->getPodcast($podcastSlug);
+        //If there is no podcast with given slug, abort
+        if ($podcast!=null)
+        {
+            //Check is this episode relative with this episode
+            $episode=Episode::where(['slug'=>$episodeSlug,
+                                    'podcast_id'=>$podcast->id])->first();
+
+            if($episode!=null)
+            {
+                return view('dashboard.pages.episodeShow')->withPodcast($podcast)
+                                                            ->withEpisode($episode);
+            }
+            else
+            {
+                return abort(404);
+            }
+        }
+        else
+        {
+            return abort(404);
+        }
     }
 
     /**
