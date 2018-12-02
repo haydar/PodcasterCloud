@@ -20,7 +20,8 @@ class PodcastController extends Controller
      */
     public function getPodcast($slug)
     {
-        $podcast=Podcast::Where('slug',$slug)->first();
+        $podcast=Podcast::Where(['slug'=>$slug,
+                                'user_id'=>Auth::id()])->first();
 
         return $podcast;
     }
