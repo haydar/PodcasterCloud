@@ -161,7 +161,7 @@
         //Create New Episode Button
         var createEpisodeButton=document.getElementById('createEpisode');
 
-        createEpisodeButton.onclick=function(e){
+        createEpisodeButton.onclick = function(e){
             var audioFileId=document.getElementById('audioFile').value;
             var formData=new FormData(document.getElementById('createEpisodeForm'));
             var isFormValid=document.getElementById('createEpisodeForm').checkValidity();

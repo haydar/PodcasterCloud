@@ -132,7 +132,6 @@
                 document.getElementById('new-password').setCustomValidity('');
             }
             if(isFormValid){
-
                 $.ajax({
                     url:"{{route('user.update', Auth::id())}}",
                     type:'put',

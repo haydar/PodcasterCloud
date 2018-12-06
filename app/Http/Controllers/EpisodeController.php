@@ -186,7 +186,6 @@ class EpisodeController extends Controller
             //Check is this episode relative with this episode
             $episode=Episode::where(['slug'=>$episodeSlug,
                                     'podcast_id'=>$podcast->id])->first();
-
             if($episode!=null)
             {
                 return view('dashboard.pages.episodeShow')->withPodcast($podcast)
@@ -221,9 +220,60 @@ class EpisodeController extends Controller
      * @param  \App\Episode  $episode
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Episode $episode)
+    public function update(Request $request, $podcastSlug, $episodeSlug)
     {
-        //
+        $this->validate($request,[
+            'title'=>'required|string|max:255',
+            'subtitle'=>'nullable|string|max:255',
+            'description'=>'required|string',
+            'image'=>'image|dimensions:min_width=400,min_height=400|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'explicit'=>'required|boolean'
+        ]);
+
+        $podcast=app(PodcastController::class)->getPodcast($podcastSlug);
+
+        if ($podcast!=null)
+        {
+           $episode=Episode::where('slug',$episodeSlug)->first();
+
+           if ($episode!=null&&$episode->podcast_id==$podcast->id)
+           {
+                $episode->title=$request->title;
+
+                if($request->has('subtitle'))
+                    $episode->subtitle=$request->subtitle;
+                else
+                    $episode->subtitle=$podcast->subtitle;
+
+                $episode->description=$request->description;
+                $episode->explicit=$request->explicit;
+
+                //if there is custom episode image, upload episode's image to DigitalOcean Spaces
+                if($request->hasFile('image'))
+                {
+                    $originalImage=$request->file('image');
+                    $filename=str_replace(' ','',$request->title).'-'.time().'.'.$originalImage->getClientOriginalExtension();
+                    $location=public_path('temp\\'.$filename);
+                    Image::make($originalImage)->resize(400,400)->encode('jpg')->save($location);
+                    Storage::disk('doSpaces')->putFileAs('uploads/episodes/episodeImage', new File($location), $filename,'public');
+                    unlink($location);
+
+                    $episode->image=$filename;
+                }
+
+                $episode->save();
+                return response()->json(['message'=>'Episode successfully updated!'],200);
+           }
+           else
+           {
+                abort(404);
+           }
+
+        }
+        else
+        {
+            return abort(404);
+        }
     }
 
     /**
