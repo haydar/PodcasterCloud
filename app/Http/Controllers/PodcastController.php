@@ -15,7 +15,7 @@ class PodcastController extends Controller
 
     public function __construct()
     {
-        $this->middleware('checkPodcastOwnership', ['only' => ['update','edit','show','destroy']]);
+        $this->middleware('checkPodcastOwnership')->except(['index', 'store', 'create']);
     }
 
     /**
