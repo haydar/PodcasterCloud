@@ -12,6 +12,12 @@ use Illuminate\Http\File;
 
 class PodcastController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('checkPodcastOwnership', ['only' => ['update','edit','show','destroy']]);
+    }
+
     /**
      * Find Podcast in database
      *
@@ -107,23 +113,15 @@ class PodcastController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  string $slug
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show(Request $request)
     {
-        $podcast=$this->getPodcast($slug);
+        $podcast=$request->podcast;
 
-        if ($podcast!=null)
-        {
-            if(Auth::id()==$podcast->user_id){
-                return view('dashboard.pages.home')->withPodcast($podcast);
-            }
-        }
-        else
-        {
-            return abort(404);
-        }
+        return view('dashboard.pages.home')->withPodcast($podcast);
+
     }
 
     /**
@@ -152,20 +150,14 @@ class PodcastController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Podcast  $podcast
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Podcast $podcast)
+    public function destroy(Request $request)
     {
-        if ($podcast->user_id==Auth::id())
-        {
-            $podcast->delete();
+        $podcast=$request->podcast;
+        $podcast->delete();
 
-            return response()->json(['message'=>'Podcast successfully deleted'],200);
-        }
-        else
-        {
-            abort(404);
-        }
+        return response()->json(['message'=>'Podcast successfully deleted'],200);
     }
 }

@@ -22,7 +22,7 @@
                         </div>
                     </td>
                     <td class="col-md-3">
-                        <form role="form" method="POST" id="deletePodcast" action="{{route('podcast.destroy',$podcast->id)}}">
+                        <form role="form" method="POST" action="{{route('podcast.destroy',$podcast->slug)}}" id="deletePodcast">
                             <button type="submit" class="btn btn-danger">Sil</button>
                         </form>
                     </td>
