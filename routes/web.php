@@ -32,7 +32,7 @@ Route::group(['prefix'=>'manage','middleware' => 'auth'], function() {
 
     Route::get('users/{id}/podcast/{slug}','UserController@show')->name('user.show');
 
-    Route::resource('podcast.episode', 'EpisodeController');
+    Route::resource('podcast.episode', 'EpisodeController')->except(['edit']);
 
     Route::post('/podcast/{podcast}/episode/upload','EpisodeController@uploadEpisodeAudioFile')->name('podcast.episode.upload');
 
