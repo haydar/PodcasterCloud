@@ -30,6 +30,8 @@ class CheckPodcastOwnership
 
         app()->instance(Podcast::class, $podcast);
 
+        $request->merge(['podcast_id'=>$podcast->id]);
+
         return $next($request);
     }
 }

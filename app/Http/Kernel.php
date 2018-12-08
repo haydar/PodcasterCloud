@@ -60,5 +60,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'checkPodcastOwnership'=>\App\Http\Middleware\CheckPodcastOwnership::class,
+        'checkEpisodeOwnership'=>\App\Http\Middleware\CheckEpisodeOwnership::class,
     ];
 }
