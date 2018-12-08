@@ -28,7 +28,7 @@ class CheckPodcastOwnership
             return response('Unauthorized.', 401);
         }
 
-        app()->instance('App\Podcast', $podcast);
+        app()->instance(Podcast::class, $podcast);
 
         return $next($request);
     }
