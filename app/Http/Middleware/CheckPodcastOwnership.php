@@ -28,7 +28,7 @@ class CheckPodcastOwnership
             return response('Unauthorized.', 401);
         }
 
-        $request->merge(['podcast'=>$podcast]);
+        app()->instance('App\Podcast', $podcast);
 
         return $next($request);
     }

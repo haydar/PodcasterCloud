@@ -113,15 +113,12 @@ class PodcastController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Podcast  $givenPodcast
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show(Podcast $givenPodcast)
     {
-        $podcast=$request->podcast;
-
-        return view('dashboard.pages.home')->withPodcast($podcast);
-
+        return view('dashboard.pages.home')->withPodcast($givenPodcast);
     }
 
     /**
@@ -153,10 +150,9 @@ class PodcastController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(Podcast $givenPodcast)
     {
-        $podcast=$request->podcast;
-        $podcast->delete();
+        $givenPodcast>delete();
 
         return response()->json(['message'=>'Podcast successfully deleted'],200);
     }
