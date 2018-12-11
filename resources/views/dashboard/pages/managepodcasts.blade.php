@@ -40,7 +40,6 @@
     $(document).ready(function() {
         $(document).on('submit','#deletePodcast', function(e){
             var line=$(this).closest('tr');
-            console.log(line);
             e.preventDefault();
             swal({
                     title: 'Are you sure you want delete?',
