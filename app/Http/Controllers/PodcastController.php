@@ -127,9 +127,9 @@ class PodcastController extends Controller
      * @param  \App\Podcast  $podcast
      * @return \Illuminate\Http\Response
      */
-    public function edit(Podcast $podcast)
+    public function edit(Podcast $givenPodcast)
     {
-        //
+        return view('dashboard.pages.podcastEdit')->withPodcast($givenPodcast);
     }
 
     /**

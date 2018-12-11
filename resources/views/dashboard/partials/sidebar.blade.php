@@ -43,6 +43,12 @@
                     </ul>
                 </div>
             </li>
+            <li class="{{ Request::is('*/podcast/'.$podcast->slug.'/edit') ? 'active' : 'no' }}">
+                <a href="{{route('podcast.edit',$podcast->slug)}}">
+                    <i class="nc-icon nc-settings-gear-65"></i>
+                    <p>Podcast Settings</p>
+                </a>
+            </li>
             <li>
                 <a href="{{route('podcast.index')}}">
                     <i class="nc-icon nc-minimal-left"></i>
