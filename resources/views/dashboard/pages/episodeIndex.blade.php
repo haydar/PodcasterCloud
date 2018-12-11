@@ -30,7 +30,7 @@
                                             </a>
                                         </td>
                                         <td class="">
-                                            <form role="form" method="POST" id="deleteEpisode" action="{{route('podcast.destroy',$episode->id)}}">
+                                            <form role="form" method="POST" id="deleteEpisode" action="{{route('podcast.episode.destroy',[$podcast->slug,$episode->slug])}}">
                                                 <button type="submit" class="btn btn-danger btn-sm">
                                                         <i class="nc-icon nc-simple-remove"></i>
                                                         <span class="d-none d-md-inline-block text-capitalize">Delete</span>
@@ -48,3 +48,43 @@
     </div>
 </div>
 @endsection
+@section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.5/sweetalert2.all.js" integrity="sha256-+yrurPEYDIh9PES+m128Vc0a49Csb6lx0lSzXjX62HQ=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+        $(document).on('submit','#deleteEpisode', function(e){
+            var line=$(this).closest('tr');
+            console.log(line);
+            e.preventDefault();
+            swal({
+                    title: 'Are you sure you want delete this episode?',
+                    text: "You won't be able to revert this!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
+                         $.ajax({
+                            url:$(this).attr("action"),
+                            type:'DELETE',
+                            headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success:function(result){
+                                swal(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                                );
+                                line.fadeOut(1000);
+                            }
+                        });
+                    }
+                })
+        });
+    });
+</script>
+@endsection
+

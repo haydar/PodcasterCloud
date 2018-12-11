@@ -211,8 +211,9 @@ class EpisodeController extends Controller
      * @param  \App\Episode  $episode
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Episode $episode)
+    public function destroy(Episode $givenEpisode)
     {
-        //
+        $givenEpisode->delete();
+        return response()->json(['message'=>'Episode successfully deleted!'],200);
     }
 }

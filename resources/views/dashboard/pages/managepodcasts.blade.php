@@ -65,6 +65,13 @@
                                 'success'
                                 );
                                 line.fadeOut(1000);
+                            },
+                            error:function(result){
+                                var $data=jQuery.parseJSON(result.responseText);
+                                swal({
+                                    type: 'error',
+                                    title: $data.message
+                                });
                             }
                         });
                     }

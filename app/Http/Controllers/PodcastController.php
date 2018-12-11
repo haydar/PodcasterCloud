@@ -152,7 +152,7 @@ class PodcastController extends Controller
      */
     public function destroy(Podcast $givenPodcast)
     {
-        $givenPodcast>delete();
+        $givenPodcast->delete();
 
         return response()->json(['message'=>'Podcast successfully deleted'],200);
     }
