@@ -58,7 +58,7 @@
         updateEpisodeButton.onclick = function(e) {
 
             var formData = $('#editEpisodeForm').serializeArray();
-            
+
             //Set editor data to description
             formData[2]['value']=editor.getData();
             console.log();
