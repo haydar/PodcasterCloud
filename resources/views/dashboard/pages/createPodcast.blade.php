@@ -122,7 +122,7 @@
                                     <option value="comedy" @if(old('category') == "comedy" ? 'selected' : '')@endif >Comedy</option>
                                     <option value="education" @if(old('category') == "education" ? 'selected' : '')@endif >Education</option>
                                     <option value="games_hobbies" @if(old('category') == "games_hobbies" ? 'selected' : '')@endif >Games &amp; Hobbies</option>
-                                    <option value="government_organizations" @if(old('government_organizations') == "business" ? 'selected' : '')@endif >Government &amp; Organizations</option>
+                                    <option value="government_organizations" @if(old('category') == "business" ? 'selected' : '')@endif >Government &amp; Organizations</option>
                                     <option value="health" @if(old('category') == "health" ? 'selected' : '')@endif >Health</option>
                                     <option value="kids_family" @if(old('category') == "kids_family" ? 'selected' : '')@endif >Kids &amp; Family</option>
                                     <option value="miscellaneous" @if(old('category') == "miscellaneous" ? 'selected' : '')@endif >Miscellaneous</option>
