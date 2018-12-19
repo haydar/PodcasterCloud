@@ -61,9 +61,6 @@
 
             //Set editor data to description
             formData[2]['value']=editor.getData();
-            console.log();
-
-            console.log(formData);
 
             var isFormValid = document.getElementById('editEpisodeForm').checkValidity();
             if (isFormValid) {
@@ -99,6 +96,14 @@
                                 type: 'error',
                                 title: 'Oops...',
                                 html:$errors
+                            });
+                        }
+                        else
+                        {
+                            swal({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: $data.message,
                             });
                         }
                     },
