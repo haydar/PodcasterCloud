@@ -4,11 +4,11 @@
 <div class="content">
     <div class="card">
         <div class="card-header">
-            <h3>{{$podcast->name}}</h3>
+            <h3 id="podcastName">{{$podcast->name}}</h3>
         </div>
         <div class="card-header">
-            <form action="{{route('podcast.store')}}"  id="updatePodcast" class="pb-0" method="post" enctype="multipart/form-data">
-                @csrf
+            <form action="{{route('podcast.update',$podcast->slug)}}"  id="editPodcastForm" class="pb-0" enctype="multipart/form-data">
+                <input type="hidden" name="_method" value="put">
                 <section class="float-left pr-4 col-md-6">
                     <div class="form-group row">
                         <label for="name" >Podcast Name</label>
@@ -20,9 +20,7 @@
                     </div>
                     <div class="form-group row">
                         <label for="description">Description</label>
-                        <textarea name="description" required name="description" class="form-control"  placeholder="Tell about your podcast..." id="description" cols="30" rows="5">
-                            {{$podcast->description}}
-                        </textarea>
+                        <textarea name="description" required name="description" class="form-control"  placeholder="Tell about your podcast..." id="description" cols="30" rows="5">{{$podcast->description}}</textarea>
                     </div>
                     <div class="form-group row">
                         <label for="language">Language</label>
@@ -133,7 +131,7 @@
                 <section class="float-right col-md-6">
                     <div class="form-group row">
                         <label for="website">Website</label>
-                        <input type="url" name="website" placeholder="http://example.com" value="{{ old('website') }}" class="form-control" id="website">
+                        <input type="url" name="website" required placeholder="http://example.com" value="{{ $podcast->website }}" class="form-control" id="website">
                     </div>
                     <div class="form-group row">
                         <label for="artwork-image">Artwork Image</label>
@@ -143,7 +141,7 @@
                     </div>
                     <div class="form-group row justify-content-center">
                         <button  class="btn btn-info ml-0">Browse
-                            <input type="file" required accept=".jpg,.gif,.png,.jpeg,.gif,.svg" value="{{ old('name') }}" name="artworkImage" class="form-control-file"  id="artwork-image">
+                                <input type="file" accept=".jpg,.gif,.png,.jpeg,.gif,.svg" name="artworkImage" class="form-control-file"  id="artwork-image">
                         </button>
                     </div>
                 </section>
@@ -158,10 +156,10 @@
                     </div>
                     <div class="form-group row">
                         <label for="itunes-summary">iTunes Summary</label>
-                        <textarea name="itunes-summary" name="itunesSummary" class="form-control" placeholder="Tell about your podcast..." id="itunes-summary" cols="30" rows="3">{{$podcast->itunesSummary}}</textarea>
+                        <textarea name="itunesSummary" class="form-control" placeholder="Tell about your podcast..." id="itunes-summary" cols="30" rows="3">{{$podcast->itunesSummary}}</textarea>
                     </div>
                     <div class="form-group row float-right">
-                        <button type="submit" id="create" class="btn btn-success"><span class="fa fa-check"></span> Update Podcast</button>
+                        <button type="submit" id="updatePodcast" class="btn btn-success"><span class="fa fa-check"></span> Update Podcast</button>
                     </div>
                 </section>
             </form>
@@ -173,5 +171,70 @@
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.5/sweetalert2.all.js" integrity="sha256-+yrurPEYDIh9PES+m128Vc0a49Csb6lx0lSzXjX62HQ=" crossorigin="anonymous"></script>
 <script>
+    $(document).ready(function() {
+
+        //Update Podcast Button
+        var updateEpisodeButton = document.getElementById('updatePodcast');
+
+        updateEpisodeButton.onclick = function(e) {
+
+            var formData = new FormData(document.getElementById('editPodcastForm'));
+
+            var isFormValid = document.getElementById('editPodcastForm').checkValidity();
+            if (isFormValid) {
+                e.preventDefault();
+                $.ajax({
+                    url:"{{route('podcast.update',$podcast->slug)}}",
+                    dataType:'JSON',
+                    type:'POST',
+                    enctype: 'multipart/form-data',
+                    contentType: false,
+			        processData: false,
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data:formData,
+                    success:function(result){
+                        swal({
+                                type: 'success',
+                                title: 'Podcast Updated!',
+                        });
+
+                        document.getElementById('podcastName').innerHTML=result.podcastName;
+                        document.getElementById('navbar-podcastName').innerHTML=result.podcastName;
+                    },
+                    error:function(result){
+                        var $data=jQuery.parseJSON(result.responseText);
+                        $errors="";
+
+                        if (result.status=='422')
+                        {
+                            Object.keys($data.errors).forEach(key => {
+                                $data.errors[key].forEach(errorMessage => {
+                                    $errors+=errorMessage+'<br>';
+                                });
+                            });
+
+                            swal({
+                                type: 'error',
+                                title: 'Oops...',
+                                html:$errors
+                            });
+                        }
+                        else
+                        {
+                            swal({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: $data.message,
+                            });
+                        }
+                    },
+                });
+            }
+
+        }
+    });
 </script>
 @endsection
+

@@ -139,9 +139,52 @@ class PodcastController extends Controller
      * @param  \App\Podcast  $podcast
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Podcast $podcast)
+    public function update(Request $request, Podcast $givenPodcast)
     {
+        $this->validate($request, array(
+            'name'=>'required|string|max:255',
+            'subtitle'=>'required|string|max:255',
+            'description'=>'required|string|max:600',
+            'language'=>'required|string|max:20',
+            'category'=>'required|string|max:255',
+            'itunesEmail'=>'nullable|email|max:255',
+            'authorName'=>'nullable|string|max:255',
+            'itunesSummary'=>'nullable|string|max:255',
+            'website'=>'nullable|string|max:50|url'
+        ));
 
+        if ($request->hasFile('artworkImage'))
+        {
+            $this->validate($request,['artworkImage'=>'required|image|dimensions:min_width=400,min_height=400|mimes:jpeg,png,jpg,gif,svg|max:2048']);
+
+            $originalImage=$request->file('artworkImage');
+            $filename=str_replace(' ','',$request->name).'-'.time().'.'.$originalImage->getClientOriginalExtension();
+            $location=public_path('temp\\'.$filename);
+            Image::make($originalImage)->resize(400,300)->encode('jpg')->save($location);
+            Storage::disk('doSpaces')->putFileAs('uploads/podcastImages', new File($location), $filename,'public');
+            unlink($location);
+
+            //Delete old podcast image
+            Storage::disk('doSpaces')->delete('uploads/podcastImages/'.$givenPodcast->artworkImage);
+
+            //Write new podcast artwork image to database
+            $givenPodcast->artworkImage=$filename;
+
+        }
+
+        $givenPodcast->name=$request->name;
+        $givenPodcast->subtitle=$request->subtitle;
+        $givenPodcast->description=$request->description;
+        $givenPodcast->language=$request->language;
+        $givenPodcast->category=$request->category;
+        $givenPodcast->itunesEmail=$request->itunesEmail;
+        $givenPodcast->authorName=$request->authorName;
+        $givenPodcast->itunesSummary=$request->itunesSummary;
+        $givenPodcast->website=$request->website;
+
+        $givenPodcast->save();
+
+        return response()->json(['message'=>'Podcast Updated!','podcastName'=>$givenPodcast->name], 200);
     }
 
     /**
