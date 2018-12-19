@@ -184,7 +184,10 @@ class PodcastController extends Controller
 
         $givenPodcast->save();
 
-        return response()->json(['message'=>'Podcast Updated!','podcastName'=>$givenPodcast->name], 200);
+        $filePath=Storage::disk('doSpaces')->url('uploads/podcastImages/'.$givenPodcast->artworkImage);
+        return response()->json(['message'=>'Podcast Updated!',
+                                'podcastName'=>$givenPodcast->name,
+                                'imagePath'=>$filePath], 200);
     }
 
     /**

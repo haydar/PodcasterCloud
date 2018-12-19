@@ -137,7 +137,7 @@
                         <label for="artwork-image">Artwork Image</label>
                     </div>
                     <div class="form-group row justify-content-center">
-                        <img  height="50%" width="50%"  src="{{Storage::disk('doSpaces')->url('uploads/podcastImages/'.$podcast->artworkImage)}}">
+                        <img  height="50%" width="50%" id="podcastImage"  src="{{Storage::disk('doSpaces')->url('uploads/podcastImages/'.$podcast->artworkImage)}}">
                     </div>
                     <div class="form-group row justify-content-center">
                         <button  class="btn btn-info ml-0">Browse
@@ -202,6 +202,8 @@
 
                         document.getElementById('podcastName').innerHTML=result.podcastName;
                         document.getElementById('navbar-podcastName').innerHTML=result.podcastName;
+                        document.getElementById('podcastImage').src=result.imagePath;
+                        document.getElementById('artwork-image').value="";
                     },
                     error:function(result){
                         var $data=jQuery.parseJSON(result.responseText);
