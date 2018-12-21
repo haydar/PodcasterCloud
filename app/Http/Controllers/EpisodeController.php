@@ -31,7 +31,7 @@ class EpisodeController extends Controller
      */
     public function index(Podcast $givenPodcast)
     {
-        $episodes=Episode::where('podcast_id',$givenPodcast->id)->get();
+        $episodes=Episode::where('podcast_id',$givenPodcast->id)->paginate(5);
          return view('dashboard.pages.episodeIndex')->withPodcast($givenPodcast)
                                                     ->withEpisodes($episodes);
     }
