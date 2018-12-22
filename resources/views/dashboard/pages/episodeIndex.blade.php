@@ -10,6 +10,15 @@
                     <h3>{{$podcast->name}}'s Episodes</h3>
                 </div>
                 <div class="card-body">
+                    <div class="float-right">
+                        <form action="{{route('podcast.episode.search',$podcast->slug)}}" method="post">
+                            @csrf
+                            <input type="text" name="search" placeholder="Type episode name..." id="search">
+                            <button type="submit" class="btn btn-info btn-sm">
+                                <i class="fa fa-search"></i> <span class="d-none d-md-inline-block text-capitalize">Search</span>
+                            </button>
+                        </form>
+                    </div>
                     <table class="table">
                         <thead class="text-primary">
                             <tr>

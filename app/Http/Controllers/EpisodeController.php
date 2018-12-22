@@ -20,7 +20,7 @@ class EpisodeController extends Controller
     public function __construct()
     {
         $this->middleware('checkPodcastOwnership');
-        $this->middleware('checkEpisodeOwnership')->except(['index', 'store', 'create', 'uploadEpisodeAudioFile']);
+        $this->middleware('checkEpisodeOwnership')->except(['index', 'store', 'create', 'uploadEpisodeAudioFile','search']);
     }
 
     /**
@@ -32,6 +32,21 @@ class EpisodeController extends Controller
     public function index(Podcast $givenPodcast)
     {
         $episodes=Episode::where('podcast_id',$givenPodcast->id)->paginate(5);
+         return view('dashboard.pages.episodeIndex')->withPodcast($givenPodcast)
+                                                    ->withEpisodes($episodes);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  Request  $request
+     * @param  \App\Podcast  $givenPodcast
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request,Podcast $givenPodcast)
+    {
+        $episodes=Episode::where([['podcast_id',$givenPodcast->id],
+                                    ['title','LIKE','%'.$request->search.'%']])->paginate(5);
          return view('dashboard.pages.episodeIndex')->withPodcast($givenPodcast)
                                                     ->withEpisodes($episodes);
     }
