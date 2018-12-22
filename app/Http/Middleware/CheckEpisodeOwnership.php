@@ -25,7 +25,6 @@ class CheckEpisodeOwnership
 
         if (empty($episode))
         {
-            dd('Episode Mid.');
             return abort('404');
         }
 
