@@ -8,6 +8,7 @@ use App\User;
 use Hash;
 use Session;
 use Storage;
+use Image;
 
 class UserController extends Controller
 {
@@ -137,10 +138,10 @@ class UserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function postUpdateAvatar(Request $request, $id)
+    public function updateAvatar(Request $request, $id)
     {
         $this->validate($request, array(
-            'avatar'=>'required|image|dimensions:min_width=400,min_height=400|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'avatar'=>'required|image|dimensions:min_width=124,min_height=124|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ));
 
         $user=User::find($id);
@@ -148,23 +149,27 @@ class UserController extends Controller
         if ($request->hasFile('avatar'))
         {
             $image=$request->file('avatar');
-            $filename=str_replace(' ','',$request->name).'-'.time().'.'.$image->getClientOriginalExtension();
+            $filename=str_replace(' ','',$request->name).time().'.'.$image->getClientOriginalExtension();
             $location=public_path('temp/'.$filename);
-            Image::make($image)->resize(400,400)->encode('jpg')->save($location);
-            $imagePath=Storage::disk('doSpaces')->putFileAs('uploads/profileAvatars',$image, $filename,'public');
+            Image::make($image)->resize(124,124)->encode('jpg')->save($location);
+            Storage::disk('doSpaces')->putFileAs('uploads/profileAvatars',$image, $filename,'public');
             unlink($location);
 
+            $avatarPath=Storage::disk('doSpaces')->url('uploads/profileAvatars/'.$filename);
+
             //Delete old avatar if user's avatar isn't default avatar
-            if (!$user->avatar=='user.jpg') {
-                if(Storage::disk('doSpaces')->exists('uploads/profileAvatars'.$filename)) {
-                    Storage::disk('doSpaces')->delete('uploads/profileAvatars'.$filename);
+            if ($user->avatar!='user.jpg')
+            {
+                if(Storage::disk('doSpaces')->exists('uploads/profileAvatars/'.$user->avatar))
+                {
+                    Storage::disk('doSpaces')->delete('uploads/profileAvatars/'.$user->avatar);
                 }
             }
 
             $user->avatar=$filename;
             $user->save();
 
-            return response()->json(['message'=>'Avatar successfully updated']);
+            return response()->json(['message'=>'Avatar successfully updated','avatarPath'=> $avatarPath]);
         }
     }
 }

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Storage;
 
 class User extends Authenticatable
 {
@@ -39,6 +40,18 @@ class User extends Authenticatable
     public function podcast()
     {
         return $this->hasOne(Podcast::class);
+    }
+
+    public function getAvatarPath()
+    {
+        if ($this->avatar=='user.jpg')
+        {
+            return Storage::disk('doSpaces')->url('uploads/profileAvatars/'.'user.jpg');
+        }
+        else
+        {
+            return Storage::disk('doSpaces')->url('uploads/profileAvatars/'.$this->avatar);
+        }
     }
 
 }

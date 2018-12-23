@@ -12,20 +12,19 @@
                                 <img class="loading" id="#loading" src="{{url('/')}}/images/loading.gif">
                             </div>
                             <div id="updateAvatarSection">
-                                <form class="updateAvatarForm">
-                                    <input type="file" required name="avatar" id="avatar-input" class="avatar-input" accept=".jpg">
-                                </form>
-                                <figure>
-                                    <i class="nc-icon nc-cloud-upload-94 mx-auto">Yükleee</i>
-                                </figure>
-                                <img class="avatar" src="{{url('/')}}/images/profileAvatar/{{Auth::user()->avatar}}">
+                                <img class="avatar" id="avatar-input" src="{{Auth::user()->getAvatarPath()}}">
                             </div>
                         </div>
                         <div class="updateProfileImage">
-                            <button class="btn btn-sm btn-info" id="updateAvatar" style="text-transform:none" type="button">
-                                    <i class="nc-icon nc-cloud-upload-94"></i>
-                                    Update Avatar
-                            </button>
+                                <form class="updateAvatarForm" id="updateAvatarForm">
+                                    <div class="form-group row justify-content-center">
+                                        @method('put')
+                                        <button  class="btn btn-info ml-0">Browse
+                                            <input type="file" accept=".jpg,.gif,.png,.jpeg,.gif,.svg" name="avatar" id="avatar-input" class="form-control-file"  id="artwork-image">
+                                        </button>
+                                    </div>
+                                </form>
+
                         </div>
                     </div>
             </div>
@@ -178,8 +177,9 @@
         });
 
         <!--/*Update Avatar Button Events */-->
-        $(document).on('click','#updateAvatar',function () {
+        $(document).on('change','#avatar-input',function () {
             var updateAvatarForm=document.getElementsByClassName('updateAvatarForm');
+            var formData = new FormData(document.getElementById('updateAvatarForm'));
             var isFormValid=updateAvatarForm[0].checkValidity();
             console.log(isFormValid);
 
@@ -188,18 +188,21 @@
                     url:"{{route('user.updateAvatar',Auth::id())}}",
                     type:'POST',
                     dataType:'JSON',
+                    enctype: 'multipart/form-data',
                     contentType: false,
 			        processData: false,
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    data:$('.updateAvatarForm').serializeArray(),
+                    data:formData,
                     beforeSend:function() {
-                        $('#statusUpdateAvatar').css('display','');
+                        $('#statusUpdateAvatar').show();
                         $('#updateAvatarSection').hide(100);
                     },
-                    success:function() {
-                        $('.statusUpdateAvatar').hide();
+                    success:function(result) {
+                        document.getElementById('statusUpdateAvatar').setAttribute('style', 'display:none !important');
+                        $('#updateAvatarSection').show(100);
+                        document.getElementById('avatar-input').src=result.avatarPath;
                     },
                     error:function(result) {
                         var $data=jQuery.parseJSON(result.responseText);

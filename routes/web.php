@@ -38,6 +38,6 @@ Route::group(['prefix'=>'manage','middleware' => 'auth'], function() {
 
     Route::post('/podcast/{podcast}/episode/search','EpisodeController@search')->name('podcast.episode.search');
 
-    Route::post('user/{id}/updateAvatar', 'UserController@postUpdateAvatar')->name('user.updateAvatar');
+    Route::put('user/{id}/updateAvatar', 'UserController@updateAvatar')->name('user.updateAvatar');
 
 });
