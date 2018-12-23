@@ -46,7 +46,7 @@ class User extends Authenticatable
     {
         if ($this->avatar=='user.jpg')
         {
-            return Storage::disk('doSpaces')->url('uploads/profileAvatars/'.'user.jpg');
+            return Storage::disk('doSpaces')->url('uploads/profileAvatars/user.jpg');
         }
         else
         {
