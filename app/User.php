@@ -44,7 +44,7 @@ class User extends Authenticatable
 
     public function getAvatarPath()
     {
-        if ($this->avatar=='user.jpg')
+        if ($this->avatar=='user.jpg'||$this->avatar=='')
         {
             return Storage::disk('doSpaces')->url('uploads/profileAvatars/user.jpg');
         }

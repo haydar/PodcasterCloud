@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Input;
 use Image;
 
 class RegisterController extends Controller
@@ -72,7 +71,6 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'avatar'=>'image|nullable|dimensions:min_width=400,min_height=400|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     }
 
@@ -84,23 +82,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if(isset($data['avatar']))
-        {
-            if(Input::hasFile('avatar'))
-            {
-                $image=$data['avatar'];
-                $filename=$data['name'].'-'.time().'.'.$image->getClientOriginalExtension();
-                $location=public_path('images/profileAvatar/'.str_replace(' ', '',$filename));
-                Image::make($image)->resize(400,400)->save($location);
-            }
-        }
-
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            // If user did not selected any avatar image, use default avatar.
-            'avatar'=>isset($filename)?$filename:'user.jpg',
+            'avatar'=>"user.jpg",
         ]);
     }
 }
