@@ -48,12 +48,13 @@ class CreateEpisode implements ShouldQueue
         $audioMeta = new getID3();
         $audioMetaData=$audioMeta->analyze($audioFileLocation);
         $episode->duration= $audioMetaData['playtime_string'];
-
+        
         if (file_exists($audioFileLocation))
         {
             Storage::disk('doSpaces')->putFileAs('uploads/episodes/episodeAudio', new File($audioFileLocation),$filename,'public');
             unlink($audioFileLocation);
             $episode->audio=$filename;
+
             $episode->save();
             $audioFile->delete();
 

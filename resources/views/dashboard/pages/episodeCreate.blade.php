@@ -35,7 +35,20 @@
             </div>
             <span class="text-center" id="progressBarStatus"></span><br>
             <form action="" method="post" id="createEpisodeForm">
-                <div class="col-md-4"></div>
+                <div class="col-md-4 float-left">
+                    <div class="form-group row">
+                        <label for="artwork-image">Episode Image (Optinal)</label>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <img  height="70%" width="70%" id="podcastImage"  src="{{$podcast->getArtworkImagePath()}}">
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <button  class="btn btn-info">
+                            <i class="nc-icon nc-cloud-upload-94"></i> Upload Custom Image
+                            <input type="file" accept=".jpg,.gif,.png,.jpeg,.gif,.svg" name="image" class="form-control-file"  id="image">
+                        </button>
+                    </div>
+                </div>
                 <div class="col-md-8 float-right">
                     <input type="hidden" name="audioFile" id="audioFile">
                     <div class="form-group">

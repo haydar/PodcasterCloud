@@ -139,6 +139,8 @@ class EpisodeController extends Controller
         $audioFile=AudioFile::where(['id'=>$request->audioFile,
                                     'podcast_id'=>$givenPodcast->id])->first();
 
+
+
         if($audioFile!=null)
         {
             CreateEpisode::dispatch($episode->toArray(),$audioFile);
@@ -212,7 +214,9 @@ class EpisodeController extends Controller
             Storage::disk('doSpaces')->putFileAs('uploads/episodes/episodeImage', new File($location), $filename,'public');
             unlink($location);
 
+
             $givenEpisode->image=$filename;
+
         }
 
         $givenEpisode->save();

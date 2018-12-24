@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Purifier;
+use Storage;
 
 class Podcast extends Model
 {
@@ -27,5 +28,10 @@ class Podcast extends Model
     public function episode()
     {
         $this->hasOne(Episode::class);
+    }
+
+    public function getArtworkImagePath()
+    {
+        return Storage::disk('doSpaces')->url('uploads/podcastImages/'.$this->artworkImage);
     }
 }
