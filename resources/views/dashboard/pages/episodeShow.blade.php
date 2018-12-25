@@ -5,8 +5,22 @@
             <h3>Editing Episode</h3>
         </div>
         <div class="card-body">
-            <form action="" method="POST" id="editEpisodeForm" class="editEpisodeForm">
-                <div class="col-md-4"></div>
+            <form id="editEpisodeForm" class="editEpisodeForm">
+                <input type="hidden" name="_method" value="put">
+                <div class="col-md-4 float-left">
+                    <div class="form-group row">
+                        <label for="artwork-image">Episode Image</label>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <img height="70%" width="70%" id="episodeImage" src="{{$episode->getImagePath()}}">
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <button class="btn btn-info">
+                            <i class="nc-icon nc-cloud-upload-94"></i> Change Custom Image
+                            <input type="file" accept=".jpg,.gif,.png,.jpeg,.gif,.svg" name="image" class="form-control-file" id="image">
+                        </button>
+                    </div>
+                </div>
                 <div class="col-md-8 float-right">
                     <div class="form-group">
                         <label class="font-weight-bold" for="title">Title :</label>
@@ -58,10 +72,10 @@
 
         updateEpisodeButton.onclick = function(e) {
 
-            var formData = $('#editEpisodeForm').serializeArray();
+            var formData = new FormData(document.getElementById('editEpisodeForm'));
 
             //Set editor data to description
-            formData[2]['value']=editor.getData();
+            formData.append('description',editor.getData());
 
             var isFormValid = document.getElementById('editEpisodeForm').checkValidity();
             if (isFormValid) {
@@ -69,7 +83,10 @@
                 $.ajax({
                     url:"{{route('podcast.episode.update',[$podcast->slug,$episode->slug])}}",
                     dataType:'JSON',
-                    type:'PUT',
+                    type:'POST',
+                    enctype: 'multipart/form-data',
+                    contentType: false,
+			        processData: false,
                     headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
@@ -79,7 +96,8 @@
                                 type: 'success',
                                 title: 'Episode Updated!',
                         });
-
+                        document.getElementById('episodeImage').src=result.imagePath;
+                        document.getElementById('image').value="";
                     },
                     error:function(result){
                         var $data=jQuery.parseJSON(result.responseText);

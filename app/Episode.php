@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Storage;
 
 class Episode extends Model
 {
@@ -24,11 +25,23 @@ class Episode extends Model
 
     public function podcast()
     {
-        $this->belongsTo(Podcast::class);
+        return $this->belongsTo(Podcast::class);
     }
 
     public function audio_file()
     {
         return $this->hasOne(AudioFile::class);
+    }
+
+    public function getImagePath()
+    {
+        if(isset($this->image))
+        {
+            return Storage::disk('doSpaces')->url('uploads/episodes/episodeImage/'.$this->image);
+        }
+        else
+        {
+            return $this->podcast->getArtworkImagePath();
+        }
     }
 }

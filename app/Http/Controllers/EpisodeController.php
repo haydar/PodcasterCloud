@@ -214,13 +214,19 @@ class EpisodeController extends Controller
             Storage::disk('doSpaces')->putFileAs('uploads/episodes/episodeImage', new File($location), $filename,'public');
             unlink($location);
 
+            //Delete old episode image
+            if(Storage::disk('doSpaces')->exists('uploads/episodes/episodeImage/'.$givenEpisode->image))
+            {
+                Storage::disk('doSpaces')->delete('uploads/episodes/episodeImage/'.$givenEpisode->image);
+            }
 
             $givenEpisode->image=$filename;
 
         }
 
         $givenEpisode->save();
-        return response()->json(['message'=>'Episode successfully updated!'],200);
+        return response()->json(['message'=>'Episode successfully updated!',
+                                'imagePath'=>$givenEpisode->getImagePath()],200);
 
     }
 
