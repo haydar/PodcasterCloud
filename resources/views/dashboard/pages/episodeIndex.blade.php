@@ -13,7 +13,7 @@
                     <div class="float-right">
                         <form action="{{route('podcast.episode.search',$podcast->slug)}}" method="post">
                             @csrf
-                            <input type="text" name="search" placeholder="Type episode name..." id="search">
+                            <input type="text" name="search" placeholder="Type episode title..." id="search">
                             <button type="submit" class="btn btn-info btn-sm">
                                 <i class="fa fa-search"></i> <span class="d-none d-md-inline-block text-capitalize">Search</span>
                             </button>
