@@ -19,7 +19,7 @@
                                 <form class="updateAvatarForm" id="updateAvatarForm">
                                     <div class="form-group row justify-content-center">
                                         @method('put')
-                                        <button  class="btn btn-info ml-0">Browse
+                                        <button  class="btn btn-info ml-0 btn-sm text-capitalize">Update Image
                                             <input type="file" accept=".jpg,.gif,.png,.jpeg,.gif,.svg" name="avatar" id="avatar-input" class="form-control-file"  id="artwork-image">
                                         </button>
                                     </div>
