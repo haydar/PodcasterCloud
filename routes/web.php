@@ -22,6 +22,8 @@ Route::get('/resend','UserVerificationController@resend')->name('user.resendVeri
 
 Route::get('/home', 'PodcastController@index')->name('home');
 
+Route::get('/feeds/{podcastSlug}', 'FeedController@getFeed')->name('feed');
+
 Route::group(['prefix'=>'manage','middleware' => 'auth'], function() {
 
     Route::get('/', 'PodcastController@index');

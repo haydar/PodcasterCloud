@@ -27,7 +27,7 @@ class Podcast extends Model
 
     public function episode()
     {
-        $this->hasOne(Episode::class);
+        return $this->hasOne(Episode::class);
     }
 
     public function getArtworkImagePath()

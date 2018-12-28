@@ -44,4 +44,9 @@ class Episode extends Model
             return $this->podcast->getArtworkImagePath();
         }
     }
+
+    public function getAudioFilePath()
+    {
+        return Storage::disk('doSpaces')->url('uploads/episodes/episodeAudio/'.$this->audio);
+    }
 }
