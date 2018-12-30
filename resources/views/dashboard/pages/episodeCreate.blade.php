@@ -56,11 +56,6 @@
                         <input type="text" class="form-control" required name="title" placeholder="Type episode title..." id="title">
                     </div>
                     <div class="form-group">
-                        <label class="font-weight-bold" for="subtitle">Subtitle :</label>
-                        <input type="text" class="form-control" required name="subtitle" placeholder="Type episode subtitle..." id="subtitle">
-                        <small class="form-text text-muted">This section is optinal*</small>
-                    </div>
-                    <div class="form-group">
                         <label class="font-weight-bold" for="description">Description :</label>
                         <textarea id='editor'  name="description" rows="10" cols="20"></textarea>
                     </div>
