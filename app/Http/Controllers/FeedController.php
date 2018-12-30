@@ -56,8 +56,8 @@ class FeedController extends Controller
             $explicit=$episode->explicit?'yes':'no';
 
             $item->addChild('itunes:explicit',$explicit,$itunes);
-            $item->addChild('itunes:summary',$episode->description,$itunes);
-            $item->addChild('itunes:subtitle',$episode->subtitle,$itunes);
+            $item->addChild('itunes:summary',strip_tags($episode->description),$itunes);
+            $item->addChild('itunes:subtitle',$episode->title,$itunes);
             $episodeImage=$item->addChild('itunes:image',null,$itunes);
             $episodeImage->addAttribute('href',$episode->getImagePath());
 
