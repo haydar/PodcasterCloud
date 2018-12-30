@@ -117,23 +117,23 @@
                             <label for="podcast_category">Podcast Category</label>
                             <select required name="category" id="podcast-category" value="{{ old('category') }}" class="form-control">
                                     <option value="" @if(old('category') == "" ? 'selected' : '')@endif disabled>Select Your Category</option>
-                                    <option value="arts" @if(old('category') == "arts" ? 'selected' : '')@endif >Arts</option>
-                                    <option value="business" @if(old('category') == "business" ? 'selected' : '')@endif >Business</option>
-                                    <option value="comedy" @if(old('category') == "comedy" ? 'selected' : '')@endif >Comedy</option>
-                                    <option value="education" @if(old('category') == "education" ? 'selected' : '')@endif >Education</option>
-                                    <option value="games_hobbies" @if(old('category') == "games_hobbies" ? 'selected' : '')@endif >Games &amp; Hobbies</option>
-                                    <option value="government_organizations" @if(old('government_organizations') == "business" ? 'selected' : '')@endif >Government &amp; Organizations</option>
-                                    <option value="health" @if(old('category') == "health" ? 'selected' : '')@endif >Health</option>
-                                    <option value="kids_family" @if(old('category') == "kids_family" ? 'selected' : '')@endif >Kids &amp; Family</option>
-                                    <option value="miscellaneous" @if(old('category') == "miscellaneous" ? 'selected' : '')@endif >Miscellaneous</option>
-                                    <option value="music" @if(old('category') == "music" ? 'selected' : '')@endif >Music</option>
-                                    <option value="news_politics" @if(old('category') == "news_politics" ? 'selected' : '')@endif >News &amp; Politics</option>
-                                    <option value="religion_spirituality" @if(old('category') == "religion_spirituality" ? 'selected' : '')@endif >Religion &amp; Spirituality</option>
-                                    <option value="science_medicine" @if(old('category') == "science_medicine" ? 'selected' : '')@endif >Science &amp; Medicine</option>
-                                    <option value="society_culture" @if(old('category') == "society_culture" ? 'selected' : '')@endif >Society &amp; Culture</option>
-                                    <option value="sports_recreation" @if(old('category') == "sports_recreation" ? 'selected' : '')@endif >Sports &amp; Recreation</option>
-                                    <option value="technology" @if(old('category') == "technology" ? 'selected' : '')@endif >Technology</option>
-                                    <option value="tv_film" @if(old('category') == "tv_film" ? 'selected' : '')@endif >TV &amp; Film</option>
+                                    <option value="Arts" @if(old('category') == "Arts" ? 'selected' : '')@endif >Arts</option>
+                                    <option value="Business" @if(old('category') == "Business" ? 'selected' : '')@endif >Business</option>
+                                    <option value="Comedy" @if(old('category') == "Comedy" ? 'selected' : '')@endif >Comedy</option>
+                                    <option value="Education" @if(old('category') == "Education" ? 'selected' : '')@endif >Education</option>
+                                    <option value="Games & Hobbies" @if(old('category') == "Games & Hobbies" ? 'selected' : '')@endif >Games &amp; Hobbies</option>
+                                    <option value="Government & Organizations" @if(old('category') == "Government & Organizations" ? 'selected' : '')@endif >Government &amp; Organizations</option>
+                                    <option value="Health" @if(old('category') == "Health" ? 'selected' : '')@endif >Health</option>
+                                    <option value="Kids & Family" @if(old('category') == "Kids & Family" ? 'selected' : '')@endif >Kids &amp; Family</option>
+                                    <option value="Miscellaneous" @if(old('category') == "Miscellaneous" ? 'selected' : '')@endif >Miscellaneous</option>
+                                    <option value="Music" @if(old('category') == "Music" ? 'selected' : '')@endif >Music</option>
+                                    <option value="News & Politics" @if(old('category') == "News & Politics" ? 'selected' : '')@endif >News &amp; Politics</option>
+                                    <option value="Religion & Spirituality" @if(old('category') == "Religion & Spirituality" ? 'selected' : '')@endif >Religion &amp; Spirituality</option>
+                                    <option value="Science & Medicine" @if(old('category') == "Science & Medicine" ? 'selected' : '')@endif >Science &amp; Medicine</option>
+                                    <option value="Society & Culture" @if(old('category') == "Society & Culture" ? 'selected' : '')@endif >Society &amp; Culture</option>
+                                    <option value="Sports & Recreation" @if(old('category') == "Sports & Recreation" ? 'selected' : '')@endif >Sports &amp; Recreation</option>
+                                    <option value="Technology" @if(old('category') == "Technology" ? 'selected' : '')@endif >Technology</option>
+                                    <option value="TV & Film" @if(old('category') == "TV & Film" ? 'selected' : '')@endif >TV &amp; Film</option>
                             </select>
                         </div>
                         <div class="form-group row">
