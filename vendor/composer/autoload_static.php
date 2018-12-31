@@ -486,6 +486,7 @@ class ComposerStaticInitdef005d50fcf1f68f3d2c983505c9c47
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\EpisodeController' => __DIR__ . '/../..' . '/app/Http/Controllers/EpisodeController.php',
+        'App\\Http\\Controllers\\FeedController' => __DIR__ . '/../..' . '/app/Http/Controllers/FeedController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\PodcastController' => __DIR__ . '/../..' . '/app/Http/Controllers/PodcastController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
