@@ -157,7 +157,9 @@
                                 $errors+=errorMessage+'<br>';
                             });
                         });
-
+                        fileUploadPercent.html('0%');
+                        fileProgressBar.width('0%');
+                        progressBarStatus.textContent="File Upload Failed, Please refresh page and try again..."
                         swal({
                                 type: 'error',
                                 title: 'Oops...',
