@@ -53,7 +53,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3 d-flex justify-content-center">
-                        <div class="pl-3" id="episodes-pagination" >
+                        <div class="pl-3" id="episodes-pagination">
                             Showing {{$episodes->perPage()}} to {{$episodes->total()}} of episodes.
                         </div>
                     </div>

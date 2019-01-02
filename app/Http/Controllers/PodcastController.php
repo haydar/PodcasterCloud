@@ -118,7 +118,7 @@ class PodcastController extends Controller
      */
     public function show(Podcast $givenPodcast)
     {
-        return view('dashboard.pages.home')->withPodcast($givenPodcast);
+        return view('dashboard.pages.showPodcast')->withPodcast($givenPodcast);
     }
 
     /**
