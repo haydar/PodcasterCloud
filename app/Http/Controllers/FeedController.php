@@ -12,7 +12,7 @@ class FeedController extends Controller
 {
     public function getFeed($podcastSlug)
     {
-        $podcast=Podcast::where('slug',$podcastSlug)->first();
+        $podcast=Podcast::where('slug',$podcastSlug)->firstOrFail();
         $episodes=Episode::where('podcast_id',$podcast->id)->orderBy('created_at','desc')->get();
 
         $itunes="http://www.itunes.com/dtds/podcast-1.0.dtd";
