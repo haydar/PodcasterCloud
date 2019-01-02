@@ -5,6 +5,7 @@
     <div class="card">
         <div class="card-header">
             <h3 id="podcastName">{{$podcast->name}}</h3>
+            <a class="text-bold" for="feedUrl">Your XML Feed : </a><a href="http://podcastercloud.com/feeds/{{$podcast->slug}}"> http://podcastercloud.com/feeds/{{$podcast->slug}}</a>
         </div>
         <div class="card-header">
             <form action="{{route('podcast.update',$podcast->slug)}}"  id="editPodcastForm" class="pb-0" enctype="multipart/form-data">
