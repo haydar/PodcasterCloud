@@ -20,8 +20,6 @@ Auth::routes();
 Route::get('/verify','UserVerificationController@verify')->name('user.verifyEmail');
 Route::get('/resend','UserVerificationController@resend')->name('user.resendVerificationEmail');
 
-Route::get('/home', 'PodcastController@index')->name('home');
-
 Route::get('/feeds/{podcastSlug}', 'FeedController@getFeed')->name('feed');
 
 Route::group(['prefix'=>'manage','middleware' => 'auth'], function() {
