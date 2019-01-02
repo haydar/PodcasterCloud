@@ -158,7 +158,11 @@
                             });
                         });
 
-                        alert($errors);
+                        swal({
+                                type: 'error',
+                                title: 'Oops...',
+                                html:$errors
+                        });
                     }
                 });
             } else {
