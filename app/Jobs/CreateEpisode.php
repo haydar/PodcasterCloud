@@ -20,6 +20,8 @@ class CreateEpisode implements ShouldQueue
     protected $episodeArray;
     protected $audioFile;
 
+    public $tries = 5;
+
     /**
      * Create a new job instance.
      *
@@ -48,7 +50,7 @@ class CreateEpisode implements ShouldQueue
         $audioMeta = new getID3();
         $audioMetaData=$audioMeta->analyze($audioFileLocation);
         $episode->duration= $audioMetaData['playtime_string'];
-        
+
         if (file_exists($audioFileLocation))
         {
             Storage::disk('doSpaces')->putFileAs('uploads/episodes/episodeAudio', new File($audioFileLocation),$filename,'public');
