@@ -109,7 +109,7 @@
             var fileUploadPercent=$('#fileUploadPercent');
             var progressBarStatus=document.getElementById('progressBarStatus');
 
-            if (file.type=="audio/mp3"||file.type=="video/mp4") {
+            if (file.type==="audio/mp3"||file.type==="video/mp4") {
                 $('#wrongFileTypeError').hide();
                 $('#uploadAudioCard').fadeOut(1000);
                 $('#createEpisodeCard').fadeIn(1000);
