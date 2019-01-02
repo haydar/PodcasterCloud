@@ -38,7 +38,7 @@ class FeedController extends Controller
         $owner->addChild('itunes:name',$podcast->name);
 
         $category=$channel->addChild('itunes:category',null,$itunes);
-        $category->addAttribute('text',$podcast->category);
+        $category->addAttribute('text',\htmlentities($podcast->category));
 
         $image=$channel->addChild('itunes:image',null,$itunes);
         $image->addAttribute('href',$podcast->getArtworkImagePath());
