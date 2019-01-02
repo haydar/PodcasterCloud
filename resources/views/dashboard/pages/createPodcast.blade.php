@@ -29,9 +29,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="description">Description</label>
-                            <textarea name="description" required name="description" class="form-control"  placeholder="Tell about your podcast..." id="description" cols="30" rows="5">
-                                {{ old('description') }}
-                            </textarea>
+                            <textarea name="description" required name="description" class="form-control"  placeholder="Tell about your podcast..." id="description" cols="30" rows="5">{{ old('description') }}</textarea>
                         </div>
                     </section>
                     <section class="float-right col-md-6">
