@@ -131,6 +131,9 @@ return [
         'artworkImage' => [
             'dimensions' => 'At least, Artwork Image should be 400x400px',
         ],
+        'email' => [
+            'unique' => 'An account with this email already exists',
+        ],
     ],
 
     /*
@@ -157,6 +160,9 @@ return [
         'itunesSummary'=>'iTunes Summary',
         'description'=>'Description',
         'website'=>'Web Site',
+        'email'=>'Email',
+        'password'=>'Password',
+        'name'=>'Name',
     ],
 
 ];
