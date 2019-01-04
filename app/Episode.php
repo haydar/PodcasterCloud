@@ -37,7 +37,8 @@ class Episode extends Model
     {
         if(isset($this->image))
         {
-            return Storage::disk('doSpaces')->url('uploads/episodes/episodeImage/'.$this->image);
+            $orginalEpisodeImage=Storage::disk('doSpaces')->url('uploads/episodes/episodeImage/'.$this->image);
+            return str_replace('digitalocean','cdn.digitalocean',$orginalEpisodeImage);
         }
         else
         {
@@ -47,6 +48,7 @@ class Episode extends Model
 
     public function getAudioFilePath()
     {
-        return Storage::disk('doSpaces')->url('uploads/episodes/episodeAudio/'.$this->audio);
+        $orginalEpisodeAudio=Storage::disk('doSpaces')->url('uploads/episodes/episodeAudio/'.$this->audio);
+        return str_replace('digitalocean','cdn.digitalocean',$orginalEpisodeAudio);
     }
 }
