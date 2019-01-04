@@ -32,6 +32,7 @@ class Podcast extends Model
 
     public function getArtworkImagePath()
     {
-        return Storage::disk('doSpaces')->url('uploads/podcastImages/'.$this->artworkImage);
+        $orginalAssetUrl=Storage::disk('doSpaces')->url('uploads/podcastImages/'.$this->artworkImage);
+        return str_replace('digitalocean','cdn.digitalocean',$orginalAssetUrl);
     }
 }
