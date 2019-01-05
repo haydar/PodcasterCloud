@@ -26,7 +26,7 @@ class FeedController extends Controller
 
         $channel->addChild('title',$podcast->name);
         $channel->addChild('link',$podcast->website);
-        $channel->addChild('description','<!CDATA['.$podcast->description.']]>');
+        $channel->addChild('description','<![CDATA['.$podcast->description.']]>');
         $channel->addChild('language',$podcast->language);
         $channel->addChild('copyright',Carbon::now()->year);
         $channel->addChild('itunes:author',$podcast->authorName,$itunes);
