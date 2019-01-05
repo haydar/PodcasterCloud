@@ -31,7 +31,11 @@ class FeedController extends Controller
         $channel->addChild('itunes:summary',$podcast->description,$itunes);
         $channel->addChild('itunes:explicit','no',$itunes);
         $channel->addChild('lastBuildDate',Carbon::now()->toRfc2822String());
-        $channel->addChild('pubDate',$episodes->first()->created_at->toRfc2822String());
+
+        //If there is no episode of podcast, use podcast creating date as pubDate
+        $pubDate=isset($episodes)?$podcast->created_at->toRfc2822String():$episodes->first()->created_at->toRfc2822String();
+
+        $channel->addChild('pubDate',$pubDate);
 
         $owner=$channel->addChild('itunes:owner',null,$itunes);
         $owner->addChild('itunes:email',$podcast->itunesEmail);
@@ -43,31 +47,30 @@ class FeedController extends Controller
         $image=$channel->addChild('itunes:image',null,$itunes);
         $image->addAttribute('href',$podcast->getArtworkImagePath());
 
-        foreach ($episodes as $episode)
+        if(isset($episodes))
         {
-            $item=$channel->addChild('item');
-            $item->addChild('title',$episode->title);
-            $item->addChild('pubDate',$episode->created_at->toRfc2822String());
-            $item->addChild('link',$podcast->website);
-            $item->addChild('description','![CDATA['.$episode->description.']]');
-            $item->addChild('itunes:duration',$episode->duration,$itunes);
-            $item->addChild('itunes:author',$podcast->author,$itunes);
-
-            $explicit=$episode->explicit?'yes':'no';
-
-            $item->addChild('itunes:explicit',$explicit,$itunes);
-            $item->addChild('itunes:summary',strip_tags($episode->description),$itunes);
-            $item->addChild('itunes:subtitle',$episode->title,$itunes);
-            $episodeImage=$item->addChild('itunes:image',null,$itunes);
-            $episodeImage->addAttribute('href',$episode->getImagePath());
-
-            $enclosure=$item->addChild('enclosure');
-            $enclosure->addAttribute('type','audio/mpeg');
-            $enclosure->addAttribute('url',$episode->getAudioFilePath());
-            $enclosure->addAttribute('length',$episode->length);
-
-            $image=$item->addChild('image');
-            $image->addAttribute('href',$episode->getImagePath());
+            foreach ($episodes as $episode)
+            {
+                $item=$channel->addChild('item');
+                $item->addChild('title',$episode->title);
+                $item->addChild('pubDate',$episode->created_at->toRfc2822String());
+                $item->addChild('link',$podcast->website);
+                $item->addChild('description','![CDATA['.$episode->description.']]');
+                $item->addChild('itunes:duration',$episode->duration,$itunes);
+                $item->addChild('itunes:author',$podcast->author,$itunes);
+                $explicit=$episode->explicit?'yes':'no';
+                $item->addChild('itunes:explicit',$explicit,$itunes);
+                $item->addChild('itunes:summary',strip_tags($episode->description),$itunes);
+                $item->addChild('itunes:subtitle',$episode->title,$itunes);
+                $episodeImage=$item->addChild('itunes:image',null,$itunes);
+                $episodeImage->addAttribute('href',$episode->getImagePath());
+                $enclosure=$item->addChild('enclosure');
+                $enclosure->addAttribute('type','audio/mpeg');
+                $enclosure->addAttribute('url',$episode->getAudioFilePath());
+                $enclosure->addAttribute('length',$episode->length);
+                $image=$item->addChild('image');
+                $image->addAttribute('href',$episode->getImagePath());
+            }
         }
 
         return response($xml->asXML())->header('Content-Type', 'text/xml');
