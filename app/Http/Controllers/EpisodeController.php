@@ -110,6 +110,11 @@ class EpisodeController extends Controller
             'explicit'=>'required|boolean'
         ));
 
+        if($request->name=="create")
+        {
+            return redirect()->route('podcast.create')->withErrors("Podcast Name cannot be 'create'.");
+        }
+
         $episode=new Episode;
 
         $episode->title=$request->title;
