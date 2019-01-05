@@ -2,7 +2,7 @@
 @section('title',$podcast->name)
 @section('content')
 <div class="content">
-    @if(!empty($episodes))
+    @if(!$episodes->isEmpty())
     <div class="row">
         <div class="col-md-12">
             <div class="card">
