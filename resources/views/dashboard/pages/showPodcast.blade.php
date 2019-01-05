@@ -10,8 +10,8 @@
             </div>
             <div class="card-body">
                 <p class="mb-0">You started your broadcasting life with a clean page. You can upload new one episode or import existing podcast series.</p>
-                <a class="btn btn-success btn-sm text-white" href="https://podcastercloud.dev/manage/podcast/dfvfdvd/episode/create" style="text-transform:none;">
-                    <i class="nc-icon nc-cloud-upload-94"></i> <span class="d-none d-md-inline-block">Create Episode</span>
+                <a class="btn btn-success btn-sm text-white" href="{{route('podcast.episode.create',$podcast->slug)}}" style="text-transform:none;">
+                        <i class="nc-icon nc-cloud-upload-94"></i> <span class="d-none d-md-inline-block">Create Episode</span>
                 </a>
                 <a class="btn btn-sm btn-info text-capitalize text-white"><i class="fa fa-rss"></i> Import RSS</a>
             </div>
