@@ -23,7 +23,7 @@ class FeedController extends Controller
 
         $channel->addChild('title',$podcast->name);
         $channel->addChild('link',$podcast->website);
-        $channel->addChild('description','![CDATA['.$podcast->description.']]');
+        $channel->addChild('description',\htmlentities($podcast->description));
         $channel->addChild('language',$podcast->language);
         $channel->addChild('copyright',Carbon::now()->year);
         $channel->addChild('itunes:author',$podcast->authorName,$itunes);
@@ -55,7 +55,7 @@ class FeedController extends Controller
                 $item->addChild('title',$episode->title);
                 $item->addChild('pubDate',$episode->created_at->toRfc2822String());
                 $item->addChild('link',$podcast->website);
-                $item->addChild('description','![CDATA['.$episode->description.']]');
+                $item->addChild('description',\htmlentities($episode->description));
                 $item->addChild('itunes:duration',$episode->duration,$itunes);
                 $item->addChild('itunes:author',$podcast->author,$itunes);
                 $explicit=$episode->explicit?'yes':'no';
