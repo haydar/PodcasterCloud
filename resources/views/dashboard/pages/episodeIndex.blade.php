@@ -2,9 +2,9 @@
 @section('title',$podcast->name)
 @section('content')
 <div class="content">
+    @if(!isset($episodes))
     <div class="row">
         <div class="col-md-12">
-            @isset($episodes)
             <div class="card">
                 <div class="card-header">
                     <h3>{{$podcast->name}}'s Episodes</h3>
@@ -61,9 +61,24 @@
                         {{ $episodes->links() }}
                     </div>
                 </div>
-                @endisset
+                @else
+                <div class="row">
+                    <div class="card col-md-12">
+                        <div class="card-header">
+                            <h6 class="text-capitalize mb-0">No one at the home yet  <i class="fa fa-home"></i></h6>
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-0">You started your broadcasting life with a clean page. You can upload new one episode or import existing podcast series.</p>
+                            <a class="btn btn-success btn-sm text-white" href="{{route('podcast.episode.create',$podcast->slug)}}" style="text-transform:none;">
+                                    <i class="nc-icon nc-cloud-upload-94"></i> <span class="d-none d-md-inline-block">Create Episode</span>
+                            </a>
+                            <a class="btn btn-sm btn-info text-capitalize text-white"><i class="fa fa-rss"></i> Import RSS</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        @endif
     </div>
 @endsection
 
