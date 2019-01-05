@@ -59,7 +59,7 @@ class FeedController extends Controller
                 $item->addChild('pubDate',$episode->created_at->toRfc2822String());
                 $item->addChild('link',$podcast->website);
                 $item->addChild('description',strip_tags($episode->description));
-                $item->addChild('content:encoded','<!CDATA['.$episode->description.']]>',$content);
+                $item->addChild('content:encoded','<![CDATA['.$episode->description.']]>',$content);
                 $item->addChild('itunes:duration',$episode->duration,$itunes);
                 $item->addChild('itunes:author',$podcast->author,$itunes);
                 $explicit=$episode->explicit?'yes':'no';
