@@ -16,17 +16,16 @@ class FeedController extends Controller
         $episodes=Episode::where('podcast_id',$podcast->id)->orderBy('created_at','desc')->get();
 
         $itunes="http://www.itunes.com/dtds/podcast-1.0.dtd";
-        $content="http://purl.org/rss/1.0/modules/content/";
+        $content="http://purl.org/dc/elements/1.1/";
 
         $xml = new SimpleXMLElement('<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"/>');
-        $xml->addAttribute('xmlns:xmlns:content', 'http://purl.org/rss/1.0/modules/content/');
         $xml->addAttribute('version', '2.0');
 
         $channel=$xml->addChild('channel');
 
         $channel->addChild('title',$podcast->name);
         $channel->addChild('link',$podcast->website);
-        $channel->addChild('description','<![CDATA['.$podcast->description.']]>');
+        $channel->addChild('description','<!CDATA['.$podcast->description.']]>');
         $channel->addChild('language',$podcast->language);
         $channel->addChild('copyright',Carbon::now()->year);
         $channel->addChild('itunes:author',$podcast->authorName,$itunes);
@@ -59,7 +58,6 @@ class FeedController extends Controller
                 $item->addChild('pubDate',$episode->created_at->toRfc2822String());
                 $item->addChild('link',$podcast->website);
                 $item->addChild('description',strip_tags($episode->description));
-                $item->addChild('content:encoded','<![CDATA['.$episode->description.']]>',$content);
                 $item->addChild('itunes:duration',$episode->duration,$itunes);
                 $item->addChild('itunes:author',$podcast->author,$itunes);
                 $explicit=$episode->explicit?'yes':'no';
