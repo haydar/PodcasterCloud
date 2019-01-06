@@ -9,6 +9,7 @@ use Image;
 use Purifier;
 use Storage;
 use Illuminate\Http\File;
+use App\Episode;
 
 class PodcastController extends Controller
 {
@@ -198,6 +199,20 @@ class PodcastController extends Controller
      */
     public function destroy(Podcast $givenPodcast)
     {
+        //Delete all episodes and their assets.
+        $episodes=Episode::where('podcast_id',$givenPodcast->id)->get();
+        foreach ($episodes as $episode)
+        {
+            $episode->deleteAssets();
+            $episode->delete();
+        }
+
+        //Delete Podcast image
+        if(Storage::disk('doSpaces')->exists('uploads/podcastImages/'.$givenPodcast->artworkImage))
+        {
+            Storage::disk('doSpaces')->delete('uploads/podcastImages'.$givenPodcast->artworkImage);
+        }
+
         $givenPodcast->delete();
 
         return response()->json(['message'=>'Podcast successfully deleted'],200);
