@@ -243,6 +243,8 @@ class EpisodeController extends Controller
      */
     public function destroy(Episode $givenEpisode)
     {
+        $givenEpisode->deleteAssets();
+
         $givenEpisode->delete();
         return response()->json(['message'=>'Episode successfully deleted!'],200);
     }

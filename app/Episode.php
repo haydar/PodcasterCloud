@@ -51,4 +51,19 @@ class Episode extends Model
         $orginalEpisodeAudio=Storage::disk('doSpaces')->url('uploads/episodes/episodeAudio/'.$this->audio);
         return str_replace('digitalocean','cdn.digitalocean',$orginalEpisodeAudio);
     }
+
+    public function deleteAssets()
+    {
+        //Delete episode image
+        if(Storage::disk('doSpaces')->exists('uploads/episodes/episodeImage/'.$this->image))
+        {
+            Storage::disk('doSpaces')->delete('uploads/episodes/episodeImage/'.$this->image);
+        }
+
+        //Delete episode audio
+        if(Storage::disk('doSpaces')->exists('uploads/episodes/episodeAudio/'.$this->audio))
+        {
+            Storage::disk('doSpaces')->delete('uploads/episodes/episodeAudio/'.$this->audio);
+        }
+    }
 }
