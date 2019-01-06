@@ -1,4 +1,3 @@
-
 @extends('dashboard.layouts.master')
 @section('title',$podcast->slug)
 @section('content')
@@ -6,31 +5,29 @@
     <div class="row">
         <div class="col-md-4">
             <div class="card card-user">
-                    <div class="card-body text-center">
-                        <div class="author position-relative mt-0">
-                            <div id="statusUpdateAvatar" class="d-flex justify-content-center justify-align-center" style="display:none !important">
-                                <img class="loading" id="#loading" src="{{url('/')}}/images/loading.gif">
-                            </div>
-                            <div id="updateAvatarSection">
-                                <img class="avatar" id="avatar-input" src="{{Auth::user()->getAvatarPath()}}">
-                            </div>
+                <div class="card-body text-center">
+                    <div class="author position-relative mt-0">
+                        <div id="statusUpdateAvatar" class="d-flex justify-content-center justify-align-center" style="display:none !important">
+                            <img class="loading" id="#loading" src="{{url('/')}}/images/loading.gif">
                         </div>
-                        <div class="updateProfileImage">
-                                <form class="updateAvatarForm" id="updateAvatarForm">
-                                    <div class="form-group row justify-content-center">
-                                        @method('put')
-                                        <button  class="btn btn-info ml-0 btn-sm text-capitalize">Update Image
-                                            <input type="file" accept=".jpg,.gif,.png,.jpeg,.gif,.svg" name="avatar" id="avatar-input" class="form-control-file"  id="artwork-image">
-                                        </button>
-                                    </div>
-                                </form>
-
+                        <div id="updateAvatarSection">
+                            <img class="avatar" id="avatar-input" src="{{Auth::user()->getAvatarPath()}}">
                         </div>
                     </div>
+                    <div class="updateProfileImage">
+                        <form class="updateAvatarForm" id="updateAvatarForm">
+                            <div class="form-group row justify-content-center">
+                                @method('put')
+                                <button class="btn btn-info ml-0 btn-sm text-capitalize">Update Image
+                                    <input type="file" accept=".jpg,.gif,.png,.jpeg,.gif,.svg" name="avatar" id="avatar-input" class="form-control-file"  id="artwork-image">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-8">
-
             <div class="card card-user col-md-11" id="userProfileCard">
                 <div class="card-header">
                     <h5 class="card-title float-left">
@@ -39,39 +36,44 @@
                     <button type="submit" class="btn btn-success btn-sm float-right" id="editCancel" style="text-transform:none">Edit Profile</button>
                 </div>
                 <div class="card-body">
-                <div id="statusUpdateProfile" class="d-flex justify-content-center justify-align-center" style="display:none !important">
-                    <img class="loading" id="#loading" src="{{url('/')}}/images/loading.gif">
-                </div>
-                <form class="updateProfile">
+                    <div id="statusUpdateProfile" class="d-flex justify-content-center justify-align-center" style="display:none !important">
+                        <img class="loading" id="#loading" src="{{url('/')}}/images/loading.gif">
+                    </div>
+                    <form class="updateProfile">
                         <div class="form-group row">
                             <label for="name" class="col-form-label col-md-4 my-auto">User Name:</label>
                             <div class="col-md-8">
-                                <input type="text" required readonly value="{{Auth::user()->name}}" class="form-control-plaintext" name="name" placeholder="Type User Name" id="name">
+                                <input type="text" required readonly value="{{Auth::user()->name}}" class="form-control-plaintext" name="name" placeholder="Type User Name"
+                                    id="name">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="email" class="col-form-label col-md-4 my-auto">E-mail Adress:</label>
                             <div class="col-md-8">
-                                <input type="email" required readonly value="{{Auth::user()->email}}" class="form-control-plaintext" name="email" placeholder="Type a Valid Email" id="email">
+                                <input type="email" required readonly value="{{Auth::user()->email}}" class="form-control-plaintext" name="email" placeholder="Type a Valid Email"
+                                    id="email">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="currentPassword" class="col-form-label col-md-4 my-auto">Current Password:</label>
                             <div class="col-md-8">
-                                <input type="password" required readonly autocomplete="off" minlength="6" value="*****************" placeholder="Type a current password" class="form-control-plaintext" name="currentPassword" id="currentPassword">
+                                <input type="password" required readonly autocomplete="off" minlength="6" value="*****************" placeholder="Type a current password"
+                                    class="form-control-plaintext" name="currentPassword" id="currentPassword">
                             </div>
                         </div>
                         <div class="form-group new-password row" hidden>
                             <label for="new-password" class="col-form-label col-md-4 my-auto">New Password:</label>
                             <div class="col-md-8">
-                                <input type="password" required autocomplete="off" minlength="6" placeholder="Type a new password" class="form-control" name="newPassword" id="new-password">
+                                <input type="password" required autocomplete="off" minlength="6" placeholder="Type a new password" class="form-control" name="newPassword"
+                                    id="new-password">
                             </div>
                         </div>
 
                         <div class="form-group password-confirm row" hidden>
                             <label for="new-password-confirm" class="col-form-label col-md-4 my-auto">Password Confirm:</label>
                             <div class="col-md-8">
-                                <input type="password" required autocomplete="off" minlength="6" placeholder="Type new password" class="form-control" name="newPassword_confirmation" id="new-password-confirm">
+                                <input type="password" required autocomplete="off" minlength="6" placeholder="Type new password" class="form-control" name="newPassword_confirmation"
+                                    id="new-password-confirm">
                             </div>
                         </div>
                         <div class="form-group updateButton row justify-content-center" hidden>
@@ -84,8 +86,10 @@
     </div>
 </div>
 @endsection
+
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.5/sweetalert2.all.js" integrity="sha256-+yrurPEYDIh9PES+m128Vc0a49Csb6lx0lSzXjX62HQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.5/sweetalert2.all.js" integrity="sha256-+yrurPEYDIh9PES+m128Vc0a49Csb6lx0lSzXjX62HQ="
+    crossorigin="anonymous"></script>
 <script>
     $(document).ready(function() {
        var  formHtmlval;
@@ -226,5 +230,6 @@
             }
         });
     });
+
 </script>
 @endsection
