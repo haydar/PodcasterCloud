@@ -205,13 +205,13 @@ class PodcastController extends Controller
         //Send all episodes data to queue for deleting all episodes and their assets.
         DeletePodcastAssets::dispatch($episodes->toArray());
 
-        /*//Delete Podcast image
+        //Delete Podcast image
         if(Storage::disk('doSpaces')->exists('uploads/podcastImages/'.$givenPodcast->artworkImage))
         {
             Storage::disk('doSpaces')->delete('uploads/podcastImages/'.$givenPodcast->artworkImage);
         }
 
-        $givenPodcast->delete();*/
+        $givenPodcast->delete();
 
         return response()->json(['message'=>'Podcast successfully deleted'],200);
     }

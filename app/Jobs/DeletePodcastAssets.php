@@ -8,6 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use App\Episode;
+use Storage;
 
 class DeletePodcastAssets implements ShouldQueue
 {
@@ -33,12 +34,12 @@ class DeletePodcastAssets implements ShouldQueue
      */
     public function handle()
     {
-        $givenEpisodes=$this->episodesArray;
-        $episodes=new Episode($givenEpisodes);
+        $episodes=$this->episodesArray;
 
         foreach ($episodes as $episode)
         {
-            $episode->deleteAssets();
+            $givenEpisode=new Episode($episode);
+            $givenEpisode->deleteAssets();
         }
     }
 }
