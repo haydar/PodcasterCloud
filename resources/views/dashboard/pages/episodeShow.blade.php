@@ -57,7 +57,7 @@
         let editor;
         var textarea = document.querySelector('#editor');
         ClassicEditor.create(textarea, {
-                toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'ImageUpload'],
+                toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote'],
             })
             .then(newEditor => {
                 editor = newEditor;
