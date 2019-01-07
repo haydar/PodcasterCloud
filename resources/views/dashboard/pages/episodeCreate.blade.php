@@ -12,7 +12,7 @@
 @section('content')
 <div class="content h-100">
     <div class="card bg-light h-50" id="uploadAudioCard">
-        <div class="card-body border-dashed d-flex flex-column align-items-center text-center justify-content-center">
+        <div class="card-body border-dashed d-flex flex-column align-items-center text-center justify-content-center" id="dropSection">
             <span>Okay, you ready for upload your awesome episode. You can use the drag and drop or click to upload button.</span>
             <form  class="uploadAudioForm" id="uploadAudioForm" enctype="multipart/form-data">
                 <input type="file" required hidden accept=".mp3,.m4a,.mp4,.m4r" name="audio" id="audioInput">
@@ -247,6 +247,26 @@
             }
         }
     });
+
+     //Drag and drop
+
+    var dropSection=document.getElementById('dropSection');
+
+    dropSection.ondrop=function (event){
+        event.preventDefault();
+        console.log('droplandı');
+        document.getElementById('audioInput').files=event.dataTransfer.files;
+    }
+
+    dropSection.ondragover=function (event){
+        event.preventDefault();
+        dropSection.classList.add('bg-white');
+    }
+
+    dropSection.ondragleave=function (event){
+        event.preventDefault();
+        dropSection.classList.remove('bg-white');
+    }
 
 </script>
 @endsection
