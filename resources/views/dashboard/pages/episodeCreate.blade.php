@@ -17,7 +17,7 @@
             <form  class="uploadAudioForm" id="uploadAudioForm" enctype="multipart/form-data">
                 <input type="file" required hidden accept=".mp3,.m4a,.mp4,.m4r" name="audio" id="audioInput">
                 <button type="button" class="btn btn-success btn-lg text-white" id="uploadButton" style="text-transform:none;">
-                <i class="nc-icon nc-cloud-upload-94"></i>  Create Episode </button>
+                <i class="nc-icon nc-cloud-upload-94"></i>  Upload Episode File </button>
             </form>
             <small id="wrongFileTypeError" style="display:none;" class="form-text text-danger">You have selected a file with the wrong file type. We can accept only audio files.</small>
         </div>
