@@ -72,7 +72,7 @@
                             <a class="btn btn-success btn-sm text-white" href="{{route('podcast.episode.create',$podcast->slug)}}" style="text-transform:none;">
                                     <i class="nc-icon nc-cloud-upload-94"></i> <span class="d-none d-md-inline-block">Create Episode</span>
                             </a>
-                            <a class="btn btn-sm btn-info text-capitalize text-white"><i class="fa fa-rss"></i> Import RSS</a>
+                            <a class="btn btn-sm btn-info text-capitalize text-white" href="{{route('podcast.importPage',$podcast->slug)}}"><i class="fa fa-rss"></i> Import RSS</a>
                         </div>
                     </div>
                 </div>

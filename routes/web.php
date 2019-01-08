@@ -34,6 +34,10 @@ Route::group(['prefix'=>'manage','middleware' => 'auth'], function() {
 
     Route::resource('podcast.episode', 'EpisodeController')->except(['edit']);
 
+    Route::get('/podcast/{podcast}/import','PodcastController@importPage')->name('podcast.importPage');
+
+    Route::post('/podcast/{podcast}/importepisode','PodcastController@importEpisodes')->name('podcast.import');
+
     Route::post('/podcast/{podcast}/episode/upload','EpisodeController@uploadEpisodeAudioFile')->name('podcast.episode.upload');
 
     Route::post('/podcast/{podcast}/episode/search','EpisodeController@search')->name('podcast.episode.search');

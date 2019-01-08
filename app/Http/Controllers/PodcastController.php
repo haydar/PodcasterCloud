@@ -215,4 +215,26 @@ class PodcastController extends Controller
 
         return response()->json(['message'=>'Podcast successfully deleted'],200);
     }
+
+     /**
+     * Display the specified resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Podcast  $givenPodcast
+     * @return \Illuminate\Http\Response
+     */
+    public function importPage(Podcast $givenPodcast)
+    {
+        return view('dashboard.pages.episodeImport')->withPodcast($givenPodcast);
+    }
+
+    /**
+     * Create items from XML feed.
+     *
+     * @param  \App\Podcast  $givenPodcast
+     * @return \Illuminate\Http\Response
+     */
+    public function importEpisodes(Podcast $givenPodcast)
+    {
+    }
 }
