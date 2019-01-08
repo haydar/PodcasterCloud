@@ -13,7 +13,7 @@
 <div class="content h-100">
     <div class="card bg-light h-50" id="importEpisodeCard">
         <div class="card-body border-dashed d-flex flex-column align-items-center text-center justify-content-center" id="dropSection">
-            <span>Okay, you ready for upload your awesome episode. You can use the drag and drop or click to upload button.</span>
+            <span>You have already a podcast series and you wanna migrate to Podcaster Cloud Services? Don't worry we thought about this too.</span>
             <form  class="importEpisodeCard col-md-8" id="importEpisodeCard" enctype="multipart/form-data">
                 <label for="importUrl">Feed URL :</label>
                 <input type="url" class="form-control" required name="importUrl" id="importUrl" placeholder="Paste your RSS Feed">
