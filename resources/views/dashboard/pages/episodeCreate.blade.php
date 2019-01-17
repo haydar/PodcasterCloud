@@ -56,8 +56,17 @@
                         <input type="text" class="form-control" required name="title" placeholder="Type episode title..." id="title">
                     </div>
                     <div class="form-group">
+                        <label class="font-weight-bold" for="subtitle">Subtitle :</label>
+                        <input type="text" class="form-control"  name="subtitle" placeholder="Type episode subtitle..." id="subtitle">
+                        <small class="form-text text-muted">This section is optional*</small>
+                    </div>
+                    <div class="form-group">
                         <label class="font-weight-bold" for="description">Description :</label>
                         <textarea id='editor'  name="description" rows="10" cols="20"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-bold" for="itunesSummary">Custom iTunes Summary (optional) :</label>
+                        <input type="text" class="form-control" name="itunesSummary" placeholder="Type iTunes summary..." maxlength="255" id="itunesSummary">
                     </div>
                     <div class="form-group">
                         <label for="explicit">Explicit :</label>

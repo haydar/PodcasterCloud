@@ -107,7 +107,8 @@ class EpisodeController extends Controller
             'description'=>'required|string',
             'image'=>'image|dimensions:min_width=400,min_height=400|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'audioFile'=>'required|numeric',
-            'explicit'=>'required|boolean'
+            'explicit'=>'required|boolean',
+            'itunesSummary'=>'nullable|string|max:255'
         ));
 
         if($request->name=="create")
@@ -125,6 +126,12 @@ class EpisodeController extends Controller
             $episode->subtitle=$givenPodcast->subtitle;
 
         $episode->description=$request->description;
+
+        if ($request->has('itunesSummary'))
+        {
+            $episode->itunesSummary=\strip_tags($request->itunesSummary);
+        }
+
         $episode->explicit=$request->explicit;
         $episode->podcast_id=$givenPodcast->id;
 
@@ -196,7 +203,8 @@ class EpisodeController extends Controller
             'subtitle'=>'nullable|string|max:255',
             'description'=>'required|string',
             'image'=>'image|dimensions:min_width=400,min_height=400|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'explicit'=>'required|boolean'
+            'explicit'=>'required|boolean',
+            'itunesSummary'=>'nullable|string|max:255'
         ]);
 
         $givenEpisode->title=$request->title;
@@ -207,6 +215,12 @@ class EpisodeController extends Controller
             $givenEpisode->subtitle=$givenPodcast->subtitle;
 
         $givenEpisode->description=$request->description;
+
+        if ($request->has('itunesSummary'))
+        {
+            $givenEpisode->itunesSummary=\strip_tags($request->itunesSummary);
+        }
+
         $givenEpisode->explicit=$request->explicit;
 
         //if there is custom episode image, upload episode's image to DigitalOcean Spaces
