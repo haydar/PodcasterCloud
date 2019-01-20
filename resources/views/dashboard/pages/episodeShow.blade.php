@@ -83,6 +83,7 @@
 
             var isFormValid = document.getElementById('editEpisodeForm').checkValidity();
             if (isFormValid) {
+                e.preventDefault();
                 $.ajax({
                     url:"{{route('podcast.episode.update',[$podcast->slug,$episode->slug])}}",
                     dataType:'JSON',
