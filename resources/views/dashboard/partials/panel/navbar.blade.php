@@ -50,7 +50,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">Logout</a>
-                         <form id="logout-form" action="https://podcastercloud.dev/logout" method="POST" style="display: none;">
+                         <form id="logout-form" action="{{url('/logout')}}" method="POST" style="display: none;">
                            @csrf
                          </form>
                     </div>
