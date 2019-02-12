@@ -36,7 +36,7 @@ Route::group(['prefix'=>'manage','middleware' => 'auth'], function() {
 
     Route::get('/podcast/{podcast}/import','PodcastController@importPage')->name('podcast.importPage');
 
-    Route::post('/podcast/{podcast}/importepisode','PodcastController@importEpisodes')->name('podcast.import');
+    Route::post('/podcast/{podcast}/importepisode','PodcastController@importEpisodes')->name('podcast.importepisode');
 
     Route::post('/podcast/{podcast}/episode/upload','EpisodeController@uploadEpisodeAudioFile')->name('podcast.episode.upload');
 
