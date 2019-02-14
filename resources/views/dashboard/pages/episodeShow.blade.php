@@ -26,6 +26,11 @@
                         <label class="font-weight-bold" for="title">Title :</label>
                         <input type="text" class="form-control" required name="title" value="{{$episode->title}}" placeholder="Type episode title..." id="title">
                     </div>
+                    <audio controls>
+                        <source src="{{$episode->getAudioFilePath()}}" type="audio/ogg">
+                        <source src="{{$episode->getAudioFilePath()}}" type="audio/mpeg">
+                      Your browser does not support the audio player.
+                    </audio>
                     <div class="form-group">
                         <label class="font-weight-bold" for="subtitle">Subtitle :</label>
                         <input type="text" class="form-control"  name="subtitle" value="{{$episode->subtitle}}" placeholder="Type episode subtitle..." id="subtitle">
