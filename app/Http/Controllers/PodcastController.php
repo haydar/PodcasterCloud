@@ -11,6 +11,7 @@ use Storage;
 use Illuminate\Http\File;
 use App\Episode;
 use App\Jobs\DeletePodcastAssets;
+use App\Jobs\ImportEpisodes;
 
 class PodcastController extends Controller
 {
@@ -30,7 +31,6 @@ class PodcastController extends Controller
     {
         $podcast=Podcast::Where(['slug'=>$slug,
                                 'user_id'=>Auth::id()])->first();
-
         return $podcast;
     }
 
@@ -229,12 +229,26 @@ class PodcastController extends Controller
     }
 
     /**
-     * Create items from XML feed.
-     *
+     * Save episodes to database from XML feed.
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Podcast  $givenPodcast
      * @return \Illuminate\Http\Response
      */
-    public function importEpisodes(Podcast $givenPodcast)
+    public function importEpisodes(Request $request, Podcast $givenPodcast)
     {
+        $this->validate($request, array('importUrl'=>'url|required'));
+
+        $items=array();
+
+        if (@\simplexml_load_file($request->importUrl))
+        {
+            ImportEpisodes::dispatch($request->importUrl,$givenPodcast->toArray());
+
+            return response()->json(['message'=>'Podcast successfully deleted'],200);
+        }
+        else {
+            return response()->json(['message'=>'Podcast XML invalid'],401);
+        }
+
     }
 }
