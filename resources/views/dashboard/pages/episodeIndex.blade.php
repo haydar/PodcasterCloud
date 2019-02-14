@@ -110,7 +110,7 @@
                             success:function(result){
                                 swal(
                                 'Deleted!',
-                                'Your file has been deleted.',
+                                'Your episode has been deleted.',
                                 'success'
                                 );
                                 line.fadeOut(1000);
