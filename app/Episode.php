@@ -11,7 +11,7 @@ class Episode extends Model
     use Sluggable;
 
     protected $fillable = [
-        'title','subtitle','description','explicit','podcast_id','file','image','audio'
+        'title','subtitle','description','explicit','podcast_id','file','image','audio','created_at'
     ];
 
     public function sluggable()
