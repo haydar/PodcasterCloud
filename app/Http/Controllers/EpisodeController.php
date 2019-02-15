@@ -200,7 +200,7 @@ class EpisodeController extends Controller
     {
         $this->validate($request,[
             'title'=>'required|string|max:255',
-            'subtitle'=>'required|string|max:255',
+            'subtitle'=>'nullable|string|max:255',
             'description'=>'required|string',
             'image'=>'image|dimensions:min_width=400,min_height=400|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'explicit'=>'required|boolean',
