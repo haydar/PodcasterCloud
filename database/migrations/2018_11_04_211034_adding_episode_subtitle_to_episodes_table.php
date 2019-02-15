@@ -14,7 +14,7 @@ class AddingEpisodeSubtitleToEpisodesTable extends Migration
     public function up()
     {
         Schema::table('episodes', function (Blueprint $table) {
-            $table->string('subtitle',255);
+            $table->string('subtitle',255)->nullable();
         });
     }
 
