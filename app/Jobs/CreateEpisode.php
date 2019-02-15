@@ -45,7 +45,7 @@ class CreateEpisode implements ShouldQueue
         $episode=new Episode($episodeArray);
 
         $filename=$audioFile->file;
-        $audioFileLocation=public_path('temp\\'.$audioFile->file);
+        $audioFileLocation=public_path('temp/'.$audioFile->file);
         $episode->length=filesize($audioFileLocation);
         $audioMeta = new getID3();
         $audioMetaData=$audioMeta->analyze($audioFileLocation);
