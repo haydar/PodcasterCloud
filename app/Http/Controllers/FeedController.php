@@ -80,7 +80,19 @@ class FeedController extends Controller
                     $itunesSummary=$episode->itunesSummary;
                 }
                 $item->addChild('itunes:summary',$itunesSummary,$itunes);
-                $item->addChild('itunes:subtitle',$episode->title,$itunes);
+
+                $subtitle="";
+
+                if (!empty($episode->subtitle))
+                {
+                    $subtitle=$episode->subtitle;
+                }
+                else
+                {
+                    $subtitle=$podcast->subtitle;
+                }
+                
+                $item->addChild('itunes:subtitle',$subtitle,$itunes);
                 $episodeImage=$item->addChild('itunes:image',null,$itunes);
                 $episodeImage->addAttribute('href',$episode->getImagePath());
                 $enclosure=$item->addChild('enclosure');
