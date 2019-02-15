@@ -77,7 +77,7 @@ class EpisodeController extends Controller
 
         $audioFile=$request->file('audio');
         $filename=time().'-'.str_replace(' ','',$audioFile->getClientOriginalName());
-        $location=public_path('temp\\'.$filename);
+        $location=public_path('temp/'.$filename);
 
         move_uploaded_file($audioFile,$location);
 
