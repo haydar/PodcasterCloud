@@ -163,6 +163,9 @@ return [
         'email'=>'Email',
         'password'=>'Password',
         'name'=>'Name',
+        'title'=>'Title',
+        'subtitle'=>'Subtitle',
+        'description'=>'Description',
     ],
 
 ];
