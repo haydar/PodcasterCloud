@@ -49,6 +49,8 @@ class ImportEpisodes implements ShouldQueue
 
         for ($i=0; $i < count($xml->channel->item); $i++)
         {
+            \set_time_limit(0);
+            
             $item=new Episode;
 
             $item->podcast_id=$podcast['id'];
