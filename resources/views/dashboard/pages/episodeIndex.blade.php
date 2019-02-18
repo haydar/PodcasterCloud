@@ -30,7 +30,7 @@
                         <tbody>
                             @foreach ($episodes as $episode)
                             <tr class="">
-                                <td class="text-truncate" style="max-width: 150px;">{{$episode->title}}</td>
+                                <td class="text-truncate" style="max-width: 250px;">{{$episode->title}}</td>
                                 <td class="d-none d-sm-block text-center">{{$episode->created_at}}</td>
                                 <td class="text-right">
                                     <a href="{{ route('podcast.episode.show',[$podcast->slug,$episode->slug]) }}" class="btn btn-success btn-sm">
